@@ -62,8 +62,8 @@ int main() {
         .needDumpStart = true,
         .is_running = true
     };
-
-    strcpy(board.mac, WII_BALANCE_BOARD_ADDR);
+    
+    if(find_wii_balance_board(&board) !=0) strcpy(board.mac, WII_BALANCE_BOARD_ADDR);
 
     board.control_sock = connect_l2cap(board.mac, 0x11);
     board.receive_sock = connect_l2cap(board.mac, 0x13);
