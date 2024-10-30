@@ -58,12 +58,10 @@ bash
 
 gcc -Wall -o YAWiiBB YAWiiBBD.c YAWiiBBessentials.c -lbluetooth -DYAWIIBB_EXTENDED
 
-## Funktionen
+## Ausführen
 
-    find_wii_balance_board: Sucht das Balance Board per Bluetooth
-    send_command: Sendet Befehle ans Board, etwa für Status- und LED-Steuerung
-    calc_mass: Berechnet das Gewicht (in Gramm) auf Basis der Sensordaten und Kalibrierungswerte
-    process_calibration_data: Verarbeitet empfangene Kalibrierungsdaten
+bash
+./YAwiiBB
 
 ## Byte-Zuordnungen im Datenpuffer
 
