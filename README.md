@@ -64,6 +64,7 @@ gcc -Wall -o YAWiiBB YAWiiBBD.c YAWiiBBessentials.c -lbluetooth -DYAWIIBB_EXTEND
 
 bash
 ./YAWiiBB
+
 Beenden mit Enter oder druck auf den Hauptknopf
 
 ## Byte-Zuordnungen im Datenstrom
