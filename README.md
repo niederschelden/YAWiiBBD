@@ -61,7 +61,7 @@ gcc -Wall -o YAWiiBB YAWiiBBD.c YAWiiBBessentials.c -lbluetooth -DYAWIIBB_EXTEND
 ## Ausführen
 
 bash
-./YAwiiBB
+./YAWiiBB
 
 ## Byte-Zuordnungen im Datenpuffer
 
