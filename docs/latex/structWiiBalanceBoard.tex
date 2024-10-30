@@ -1,0 +1,107 @@
+\hypertarget{structWiiBalanceBoard}{}\doxysection{Wii\+Balance\+Board Struct Reference}
+\label{structWiiBalanceBoard}\index{WiiBalanceBoard@{WiiBalanceBoard}}
+
+
+Represents the Wii Balance Board connection and status.  
+
+
+
+
+{\ttfamily \#include $<$YAWii\+BBessentials.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{structWiiBalanceBoard_ac8fd2a5030d9fa909487abd0a76cf248}{mac}} \mbox{[}19\mbox{]}
+\item 
+int \mbox{\hyperlink{structWiiBalanceBoard_a6ef59a62b6f9581f6b589fdf1f054768}{control\+\_\+sock}}
+\item 
+int \mbox{\hyperlink{structWiiBalanceBoard_a08f14a3321220a786ed69ee26ea53794}{receive\+\_\+sock}}
+\item 
+bool \mbox{\hyperlink{structWiiBalanceBoard_a06afe1082689f0aa424fb498adfe3f5a}{need\+Status}}
+\item 
+bool \mbox{\hyperlink{structWiiBalanceBoard_ae8b9cd98c96f4e20b2a38df381380e9c}{need\+Activation}}
+\item 
+bool \mbox{\hyperlink{structWiiBalanceBoard_a3476e69559226a7d5e49f7db8147b84a}{need\+Calibration}}
+\item 
+bool \mbox{\hyperlink{structWiiBalanceBoard_abbd14b40f2304ae098ae475d545c3417}{led}}
+\item 
+bool \mbox{\hyperlink{structWiiBalanceBoard_a0135a2ac0968053cc2d20b5070a07df3}{need\+Dump\+Start}}
+\item 
+bool \mbox{\hyperlink{structWiiBalanceBoard_a4a174d3c4beb7610fba9886ba2b0cc35}{is\+\_\+running}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structWiiBalanceBoard_ac158528764e82fae8986adfb99df9269}{calibration}} \mbox{[}3\mbox{]}\mbox{[}4\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the Wii Balance Board connection and status. 
+
+This structure holds essential information about the Wii Balance Board, including its MAC address, control and interrupt socket descriptors, and a flag indicating the board\textquotesingle{}s active state. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structWiiBalanceBoard_ac158528764e82fae8986adfb99df9269}\label{structWiiBalanceBoard_ac158528764e82fae8986adfb99df9269}} 
+\index{WiiBalanceBoard@{WiiBalanceBoard}!calibration@{calibration}}
+\index{calibration@{calibration}!WiiBalanceBoard@{WiiBalanceBoard}}
+\doxysubsubsection{\texorpdfstring{calibration}{calibration}}
+{\footnotesize\ttfamily uint16\+\_\+t Wii\+Balance\+Board\+::calibration\mbox{[}3\mbox{]}\mbox{[}4\mbox{]}}
+
+Calibration data array \mbox{\Hypertarget{structWiiBalanceBoard_a6ef59a62b6f9581f6b589fdf1f054768}\label{structWiiBalanceBoard_a6ef59a62b6f9581f6b589fdf1f054768}} 
+\index{WiiBalanceBoard@{WiiBalanceBoard}!control\_sock@{control\_sock}}
+\index{control\_sock@{control\_sock}!WiiBalanceBoard@{WiiBalanceBoard}}
+\doxysubsubsection{\texorpdfstring{control\_sock}{control\_sock}}
+{\footnotesize\ttfamily int Wii\+Balance\+Board\+::control\+\_\+sock}
+
+Socket descriptor for control channel \mbox{\Hypertarget{structWiiBalanceBoard_a4a174d3c4beb7610fba9886ba2b0cc35}\label{structWiiBalanceBoard_a4a174d3c4beb7610fba9886ba2b0cc35}} 
+\index{WiiBalanceBoard@{WiiBalanceBoard}!is\_running@{is\_running}}
+\index{is\_running@{is\_running}!WiiBalanceBoard@{WiiBalanceBoard}}
+\doxysubsubsection{\texorpdfstring{is\_running}{is\_running}}
+{\footnotesize\ttfamily bool Wii\+Balance\+Board\+::is\+\_\+running}
+
+Flag to indicate if the board is actively running \mbox{\Hypertarget{structWiiBalanceBoard_abbd14b40f2304ae098ae475d545c3417}\label{structWiiBalanceBoard_abbd14b40f2304ae098ae475d545c3417}} 
+\index{WiiBalanceBoard@{WiiBalanceBoard}!led@{led}}
+\index{led@{led}!WiiBalanceBoard@{WiiBalanceBoard}}
+\doxysubsubsection{\texorpdfstring{led}{led}}
+{\footnotesize\ttfamily bool Wii\+Balance\+Board\+::led}
+
+LED Status \mbox{\Hypertarget{structWiiBalanceBoard_ac8fd2a5030d9fa909487abd0a76cf248}\label{structWiiBalanceBoard_ac8fd2a5030d9fa909487abd0a76cf248}} 
+\index{WiiBalanceBoard@{WiiBalanceBoard}!mac@{mac}}
+\index{mac@{mac}!WiiBalanceBoard@{WiiBalanceBoard}}
+\doxysubsubsection{\texorpdfstring{mac}{mac}}
+{\footnotesize\ttfamily char Wii\+Balance\+Board\+::mac\mbox{[}19\mbox{]}}
+
+Bluetooth MAC address of the Wii Balance Board \mbox{\Hypertarget{structWiiBalanceBoard_ae8b9cd98c96f4e20b2a38df381380e9c}\label{structWiiBalanceBoard_ae8b9cd98c96f4e20b2a38df381380e9c}} 
+\index{WiiBalanceBoard@{WiiBalanceBoard}!needActivation@{needActivation}}
+\index{needActivation@{needActivation}!WiiBalanceBoard@{WiiBalanceBoard}}
+\doxysubsubsection{\texorpdfstring{needActivation}{needActivation}}
+{\footnotesize\ttfamily bool Wii\+Balance\+Board\+::need\+Activation}
+
+Calibration request flag \mbox{\Hypertarget{structWiiBalanceBoard_a3476e69559226a7d5e49f7db8147b84a}\label{structWiiBalanceBoard_a3476e69559226a7d5e49f7db8147b84a}} 
+\index{WiiBalanceBoard@{WiiBalanceBoard}!needCalibration@{needCalibration}}
+\index{needCalibration@{needCalibration}!WiiBalanceBoard@{WiiBalanceBoard}}
+\doxysubsubsection{\texorpdfstring{needCalibration}{needCalibration}}
+{\footnotesize\ttfamily bool Wii\+Balance\+Board\+::need\+Calibration}
+
+Calibration request flag \mbox{\Hypertarget{structWiiBalanceBoard_a0135a2ac0968053cc2d20b5070a07df3}\label{structWiiBalanceBoard_a0135a2ac0968053cc2d20b5070a07df3}} 
+\index{WiiBalanceBoard@{WiiBalanceBoard}!needDumpStart@{needDumpStart}}
+\index{needDumpStart@{needDumpStart}!WiiBalanceBoard@{WiiBalanceBoard}}
+\doxysubsubsection{\texorpdfstring{needDumpStart}{needDumpStart}}
+{\footnotesize\ttfamily bool Wii\+Balance\+Board\+::need\+Dump\+Start}
+
+Start continuous dump request flag \mbox{\Hypertarget{structWiiBalanceBoard_a06afe1082689f0aa424fb498adfe3f5a}\label{structWiiBalanceBoard_a06afe1082689f0aa424fb498adfe3f5a}} 
+\index{WiiBalanceBoard@{WiiBalanceBoard}!needStatus@{needStatus}}
+\index{needStatus@{needStatus}!WiiBalanceBoard@{WiiBalanceBoard}}
+\doxysubsubsection{\texorpdfstring{needStatus}{needStatus}}
+{\footnotesize\ttfamily bool Wii\+Balance\+Board\+::need\+Status}
+
+Status request flag \mbox{\Hypertarget{structWiiBalanceBoard_a08f14a3321220a786ed69ee26ea53794}\label{structWiiBalanceBoard_a08f14a3321220a786ed69ee26ea53794}} 
+\index{WiiBalanceBoard@{WiiBalanceBoard}!receive\_sock@{receive\_sock}}
+\index{receive\_sock@{receive\_sock}!WiiBalanceBoard@{WiiBalanceBoard}}
+\doxysubsubsection{\texorpdfstring{receive\_sock}{receive\_sock}}
+{\footnotesize\ttfamily int Wii\+Balance\+Board\+::receive\+\_\+sock}
+
+Socket descriptor for interrupt (data) channel 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{YAWiiBBessentials_8h}{YAWii\+BBessentials.\+h}}\end{DoxyCompactItemize}

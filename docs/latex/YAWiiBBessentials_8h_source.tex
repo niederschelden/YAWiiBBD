@@ -1,0 +1,96 @@
+\hypertarget{YAWiiBBessentials_8h_source}{}\doxysection{YAWii\+BBessentials.\+h}
+\label{YAWiiBBessentials_8h_source}\index{src/YAWiiBBessentials.h@{src/YAWiiBBessentials.h}}
+\mbox{\hyperlink{YAWiiBBessentials_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef YAWIIBBESSENTIALS\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define YAWIIBBESSENTIALS\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define YAWIIBB\_EXTENDED}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <stdbool.h>} }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <sys/socket.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <bluetooth/bluetooth.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <bluetooth/l2cap.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <bluetooth/hci.h>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <bluetooth/hci\_lib.h>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{// Bedingte Einbindung von YAWiiBBextended.h, wenn YAWIIBB\_EXTENDED aktiviert ist}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define WII\_BALANCE\_BOARD\_ADDR "{}00:23:CC:43:DC:C2"{}}  }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define BUFFER\_SIZE 24  }}
+\DoxyCodeLine{33 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{ }
+\DoxyCodeLine{34     \mbox{\hyperlink{YAWiiBBessentials_8h_aca1fd1d8935433e6ba2e3918214e07f9abdeded99fe7d3f2773014a9a2cfb73d7}{RAW}},     }
+\DoxyCodeLine{35 \textcolor{preprocessor}{    \#ifdef YAWIIBB\_EXTENDED}}
+\DoxyCodeLine{36     \mbox{\hyperlink{YAWiiBBessentials_8h_aca1fd1d8935433e6ba2e3918214e07f9aedbaf1619a7cd7276e67127835445d3b}{DECODE}},  }
+\DoxyCodeLine{37     \mbox{\hyperlink{YAWiiBBessentials_8h_aca1fd1d8935433e6ba2e3918214e07f9a0593585da9181e972974c1274d8f2b4f}{DEBUG}},   }
+\DoxyCodeLine{38     \mbox{\hyperlink{YAWiiBBessentials_8h_aca1fd1d8935433e6ba2e3918214e07f9ace3e26676763569084c86b8c3b67d601}{VERBOSE}}  }
+\DoxyCodeLine{39 \textcolor{preprocessor}{    \#endif }\textcolor{comment}{//YAWIIBB\_EXTENDED}}
+\DoxyCodeLine{40 \} \mbox{\hyperlink{YAWiiBBessentials_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{keyword}{extern} \textcolor{keyword}{const} \mbox{\hyperlink{YAWiiBBessentials_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}} \mbox{\hyperlink{YAWiiBBessentials_8h_ac66ec18459b1e4901b90504cf3d8bd58}{debug\_level}};}
+\DoxyCodeLine{43 \textcolor{keyword}{extern} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{YAWiiBBessentials_8h_acab2203504e72e5e674d3174e0bd7d5e}{buffer}}[\mbox{\hyperlink{YAWiiBBessentials_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}}];}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{comment}{/* Externe Deklarationen der Befehls-\/Arrays */}}
+\DoxyCodeLine{46 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{YAWiiBBessentials_8h_a57079d2070001acbc11e3a1dc3ee255c}{status\_command}}[];}
+\DoxyCodeLine{47 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{YAWiiBBessentials_8h_afd076d37be1f030cbfd83fcf7a8cab86}{activate\_command}}[];}
+\DoxyCodeLine{48 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{YAWiiBBessentials_8h_ad412e3af0e38003eaf4fff9bac90bb86}{calibration\_command}}[];}
+\DoxyCodeLine{49 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{YAWiiBBessentials_8h_ad889214dc2e72a03ba24c7beb22d3f07}{led\_on\_command}}[];}
+\DoxyCodeLine{50 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{YAWiiBBessentials_8h_af0ff0f5bc26f47a860da6ff1c7a1f09d}{data\_dump\_command}}[];}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 }
+\DoxyCodeLine{63 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{64     \textcolor{keywordtype}{char} mac[19];                   }
+\DoxyCodeLine{65     \textcolor{keywordtype}{int} \mbox{\hyperlink{structWiiBalanceBoard_a6ef59a62b6f9581f6b589fdf1f054768}{control\_sock}};               }
+\DoxyCodeLine{66     \textcolor{keywordtype}{int} \mbox{\hyperlink{structWiiBalanceBoard_a08f14a3321220a786ed69ee26ea53794}{receive\_sock}};               }
+\DoxyCodeLine{67     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structWiiBalanceBoard_a06afe1082689f0aa424fb498adfe3f5a}{needStatus}};                }
+\DoxyCodeLine{68     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structWiiBalanceBoard_ae8b9cd98c96f4e20b2a38df381380e9c}{needActivation}};            }
+\DoxyCodeLine{69     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structWiiBalanceBoard_a3476e69559226a7d5e49f7db8147b84a}{needCalibration}};           }
+\DoxyCodeLine{70     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structWiiBalanceBoard_abbd14b40f2304ae098ae475d545c3417}{led}};                       }
+\DoxyCodeLine{71     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structWiiBalanceBoard_a0135a2ac0968053cc2d20b5070a07df3}{needDumpStart}};             }
+\DoxyCodeLine{72     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structWiiBalanceBoard_a4a174d3c4beb7610fba9886ba2b0cc35}{is\_running}};                }
+\DoxyCodeLine{73 \textcolor{preprocessor}{    \#ifdef YAWIIBB\_EXTENDED}}
+\DoxyCodeLine{74     uint16\_t calibration[3][4];     }
+\DoxyCodeLine{75 \textcolor{preprocessor}{    \#endif }\textcolor{comment}{//YAWIIBB\_EXTENDED}}
+\DoxyCodeLine{76 \} \mbox{\hyperlink{structWiiBalanceBoard}{WiiBalanceBoard}};}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{89 \textcolor{keywordtype}{void} \mbox{\hyperlink{YAWiiBBessentials_8h_a30bba7053a54749bc3fae2ccbe8a49c2}{print\_info}}(\textcolor{keyword}{const} \mbox{\hyperlink{YAWiiBBessentials_8h_aca1fd1d8935433e6ba2e3918214e07f9}{LogLevel}}* is\_debug\_level, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* message, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* \mbox{\hyperlink{YAWiiBBessentials_8h_acab2203504e72e5e674d3174e0bd7d5e}{buffer}}, \textcolor{keywordtype}{int} length, \textcolor{keyword}{const} \mbox{\hyperlink{structWiiBalanceBoard}{WiiBalanceBoard}}* board);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{101 \textcolor{keywordtype}{int} \mbox{\hyperlink{YAWiiBBessentials_8h_ae475fce3cc47a9f2e1fcb1efafbb7aed}{find\_wii\_balance\_board}}(\mbox{\hyperlink{structWiiBalanceBoard}{WiiBalanceBoard}}* board);}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{113 \textcolor{keywordtype}{void} \mbox{\hyperlink{YAWiiBBessentials_8h_a3ac7ea94309bcc68a18c1a6559389e54}{send\_command}}(\textcolor{keywordtype}{int} sock, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* command, \textcolor{keywordtype}{int} length);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{126 \textcolor{keywordtype}{int} \mbox{\hyperlink{YAWiiBBessentials_8h_ac548fb87e985634984dabe7ba4774b09}{connect\_l2cap}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* bdaddr\_str, uint16\_t psm);}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128 }
+\DoxyCodeLine{137 \textcolor{keywordtype}{void} \mbox{\hyperlink{YAWiiBBessentials_8h_ad059069d8a9991634ede9effc149edee}{handle\_status}}(\mbox{\hyperlink{structWiiBalanceBoard}{WiiBalanceBoard}}* board);}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{147 \textcolor{keywordtype}{void} \mbox{\hyperlink{YAWiiBBessentials_8h_ab8232c599a51c7ab97c274d3e77b5f44}{handle\_calibration}}(\mbox{\hyperlink{structWiiBalanceBoard}{WiiBalanceBoard}}* board);}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{157 \textcolor{keywordtype}{void} \mbox{\hyperlink{YAWiiBBessentials_8h_a5868e6594d3f3d196617b6213281efda}{handle\_led\_on}}(\mbox{\hyperlink{structWiiBalanceBoard}{WiiBalanceBoard}}* board);}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{167 \textcolor{keywordtype}{void} \mbox{\hyperlink{YAWiiBBessentials_8h_a07bfbd5600af37648e85f66c773e3f64}{handle\_activation}}(\mbox{\hyperlink{structWiiBalanceBoard}{WiiBalanceBoard}}* board);}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{177 \textcolor{keywordtype}{void} \mbox{\hyperlink{YAWiiBBessentials_8h_ab2e0cc68839171efaa32567b1755ec78}{handle\_data\_dump}}(\mbox{\hyperlink{structWiiBalanceBoard}{WiiBalanceBoard}}* board);}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{190 \textcolor{keywordtype}{void} \mbox{\hyperlink{YAWiiBBessentials_8h_acc21ad3571d867944d2dab3c0d607f34}{process\_received\_data}}(\textcolor{keywordtype}{int} bytes\_read, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* \mbox{\hyperlink{YAWiiBBessentials_8h_acab2203504e72e5e674d3174e0bd7d5e}{buffer}}, \mbox{\hyperlink{structWiiBalanceBoard}{WiiBalanceBoard}}* board);}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193 \textcolor{preprocessor}{\#ifdef YAWIIBB\_EXTENDED}}
+\DoxyCodeLine{235 \textcolor{keywordtype}{void} \mbox{\hyperlink{YAWiiBBessentials_8h_a8a70b74d08e64dcfd5a6b1e289e2ef08}{process\_calibration\_data}}(\textcolor{keywordtype}{int}* bytes\_read, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* \mbox{\hyperlink{YAWiiBBessentials_8h_acab2203504e72e5e674d3174e0bd7d5e}{buffer}}, \mbox{\hyperlink{structWiiBalanceBoard}{WiiBalanceBoard}}* board);}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{237 }
+\DoxyCodeLine{249 uint16\_t \mbox{\hyperlink{YAWiiBBessentials_8h_ad302657f1801e9590f4a7f454818b734}{bytes\_to\_int\_big\_endian}}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\mbox{\hyperlink{YAWiiBBessentials_8h_acab2203504e72e5e674d3174e0bd7d5e}{buffer}}, \textcolor{keywordtype}{size\_t} position, \textcolor{keywordtype}{int}* max);}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{282 uint16\_t \mbox{\hyperlink{YAWiiBBessentials_8h_a05333867b38c4e18d7af195b85ac4480}{calc\_mass}}(\textcolor{keyword}{const} \mbox{\hyperlink{structWiiBalanceBoard}{WiiBalanceBoard}}* board, uint16\_t raw, \textcolor{keywordtype}{int} pos);}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{284 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//YAWIIBB\_EXTENDED}}
+\DoxyCodeLine{285 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// YAWIIBBESSENTIALS\_H}}
+
+\end{DoxyCode}
