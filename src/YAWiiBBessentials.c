@@ -48,21 +48,14 @@ void print_info(const LogLevel* is_debug_level, const char* message, const unsig
                 }
                 break;
             case DEBUG:
-                if (buffer[1] == 0x32) {
-                    //Relevante Bytes                    
-                    printf("DEBUG: Buffer Werte bei den relevanten Positionen:\n");
-                    printf("TR[4-5]: %02x %02x, BR[6-7]: %02x %02x, TL[8-9]: %02x %02x, BL[10-11]: %02x %02x\n",
-                        buffer[4], buffer[5], buffer[6], buffer[7],
-                        buffer[8], buffer[9], buffer[10], buffer[11]);
-
-                    uint16_t TR = bytes_to_int_big_endian(buffer, 4,&length);
-                    uint16_t BR = bytes_to_int_big_endian(buffer, 6,&length);
-                    uint16_t TL = bytes_to_int_big_endian(buffer, 8, &length);
-                    uint16_t BL = bytes_to_int_big_endian(buffer, 10, &length);
-
-                    printf("DECODE: TR: %u, BR: %u, TL: %u, BL: %u                 \r", TR, BR, TL, BL);
-                    //printf("RAW: %s\n", message);
-                }
+                 if (buffer[1] == 0x32) {                    
+                   uint16_t gramm[4];
+                   for(int i=0; i<4; i++){
+                    uint16_t raw = bytes_to_int_big_endian(buffer, 4 + (2 * i), &length);
+                    gramm[i] = calc_mass(board, raw, i);
+                   }
+                printf("Vorne rechts %.2f, hinten rechts %.2f, vorne links %.2f, hinten links %.2f \n", gramm[0] / 1000.0, gramm[1] / 1000.0, gramm[2] / 1000.0, gramm[3] / 1000.0);
+                 }
                  if(buffer[1] == 0x21) {
                     printf("Kalibration: ");
                     for (int i = 0; i < length; i++) printf("%i:%02x ", i, buffer[i]);
@@ -75,6 +68,7 @@ void print_info(const LogLevel* is_debug_level, const char* message, const unsig
                     }
                 break;
             case VERBOSE:
+                // noch leer
                 printf("VERBOSE: %s", message);
                 break;
             #endif //YAWIIBB_EXTENDED

@@ -10,7 +10,7 @@
 //DEBUG     Provides debugging information 
 //VERBOSE   Outputs detailed information, including interpreted data 
 #ifdef YAWIIBB_EXTENDED
-const LogLevel debug_level = DECODE; 
+const LogLevel debug_level = DEBUG; 
 #else
 const LogLevel debug_level = RAW; // Setze den gewünschten Standardwert, z. B. DEFAULT
 #endif // YAWIIBB_EXTENDED
@@ -62,7 +62,7 @@ int main() {
         .needDumpStart = true,
         .is_running = true
     };
-    
+
     if(find_wii_balance_board(&board) !=0) strcpy(board.mac, WII_BALANCE_BOARD_ADDR);
 
     board.control_sock = connect_l2cap(board.mac, 0x11);
