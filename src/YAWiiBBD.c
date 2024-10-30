@@ -59,11 +59,9 @@ void* threadFunction(void* arg) {
     return NULL;  // Thread beendet sich
 }
 
-void createThread(WiiBalanceBoard* board) {
-    pthread_t threadId;  // Thread-ID
-
+void createThread(WiiBalanceBoard* board, pthread_t* threadId) {
     // Thread erstellen
-    if (pthread_create(&threadId, NULL, threadFunction, (void*)board) != 0) {
+    if (pthread_create(threadId, NULL, threadFunction, (void*)board) != 0) {
         perror("Fehler beim Erstellen des Threads");
         board->is_running = false;  // Setze die boolesche Variable auf false
         exit(1);
@@ -86,7 +84,8 @@ int main() {
     board.receive_sock = connect_l2cap(board.mac, 0x13);
 
     // Thread erstellen, der im Hintergrund läuft
-    createThread(&board);
+    pthread_t threadId;
+    createThread(&board, &threadId);
 
     // Hauptschleife, die so lange läuft, wie is_running true ist
     while (board.is_running) {
@@ -94,6 +93,7 @@ int main() {
     }
 
     // Ressourcen aufräumen
+    pthread_join(threadId, NULL);
     close(board.control_sock);
     close(board.receive_sock);
     printf("\n");
