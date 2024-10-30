@@ -14,6 +14,7 @@
 #include <bluetooth/l2cap.h>
 #include <bluetooth/hci.h>
 #include <bluetooth/hci_lib.h>
+#include <pthread.h>
 
 // Bedingte Einbindung von YAWiiBBextended.h, wenn YAWIIBB_EXTENDED aktiviert ist
 

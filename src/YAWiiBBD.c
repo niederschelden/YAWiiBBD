@@ -1,14 +1,8 @@
 #include "YAWiiBBessentials.h"
 
-//Compile:          gcc -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
-//Compile Extended: gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c YAWiiBBextended.c -lbluetooth
+// Compile: gcc -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
+// Compile Extended: gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c YAWiiBBextended.c -lbluetooth
 
-
-//Debuglevel wählen:
-//RAW       Outputs raw data as received without interpretation
-//DECODE    Outputs big endian converted value of two bytes 
-//DEBUG     Provides debugging information 
-//VERBOSE   Outputs detailed information, including interpreted data 
 #ifdef YAWIIBB_EXTENDED
 const LogLevel debug_level = DEBUG; 
 #else
@@ -31,7 +25,6 @@ void main_loop(WiiBalanceBoard* board) {
 
 #ifdef YAWIIBB_EXTENDED
 void print_calibration_data(const WiiBalanceBoard* board) {
-    // Überprüfen, ob der Board-Zeiger gültig ist
     if (board == NULL) {
         printf("Board ist nicht initialisiert.\n");
         return;
@@ -39,19 +32,43 @@ void print_calibration_data(const WiiBalanceBoard* board) {
 
     printf("Kalibrierungsdaten:\n");
     
-    // Schleife für jede Kalibrierungsebene
     for (int i = 0; i < 3; i++) {
         printf("Kalibrierung %d:\n", i);
         
-        // Schleife für jede der vier Positionen
         for (int j = 0; j < 4; j++) {
-            // Ausgabe der Werte in einem tabellarischen Format
             printf("Position %d: %u\t", j, board->calibration[i][j]);
         }
         printf("\n"); // Neue Zeile nach jeder Kalibrierungsebene
     }
 }
 #endif // YAWIIBB_EXTENDED
+
+void* threadFunction(void* arg) {
+    WiiBalanceBoard* board = (WiiBalanceBoard*)arg;  // Typumwandlung
+    char ch;
+
+    // Warten auf die Benutzereingabe
+    while (true) {
+        ch = getchar();
+        if (ch == '\n') {  // Wenn nur Enter gedrückt wird
+            board->is_running = false;  // Setze die boolesche Variable auf false
+            break; 
+        }
+    }
+
+    return NULL;  // Thread beendet sich
+}
+
+void createThread(WiiBalanceBoard* board) {
+    pthread_t threadId;  // Thread-ID
+
+    // Thread erstellen
+    if (pthread_create(&threadId, NULL, threadFunction, (void*)board) != 0) {
+        perror("Fehler beim Erstellen des Threads");
+        board->is_running = false;  // Setze die boolesche Variable auf false
+        exit(1);
+    }
+}
 
 int main() {
     WiiBalanceBoard board = {
@@ -63,16 +80,23 @@ int main() {
         .is_running = true
     };
 
-    if(find_wii_balance_board(&board) !=0) strcpy(board.mac, WII_BALANCE_BOARD_ADDR);
+    if(find_wii_balance_board(&board) != 0) strcpy(board.mac, WII_BALANCE_BOARD_ADDR);
 
     board.control_sock = connect_l2cap(board.mac, 0x11);
     board.receive_sock = connect_l2cap(board.mac, 0x13);
 
-    while (board.is_running) main_loop(&board);
+    // Thread erstellen, der im Hintergrund läuft
+    createThread(&board);
 
+    // Hauptschleife, die so lange läuft, wie is_running true ist
+    while (board.is_running) {
+        main_loop(&board);
+    }
+
+    // Ressourcen aufräumen
     close(board.control_sock);
     close(board.receive_sock);
     printf("\n");
-    //print_calibration_data(&board);
+    // print_calibration_data(&board);
     return 0;
 }
