@@ -77,7 +77,7 @@ bash
 | Top-Left (TL)     | 8-9   | Rohdaten des Sensors oben links  |
 | Bottom-Left (BL)  | 10-11 | Rohdaten des Sensors unten links  |
 
-### Byte-Positionen für Kalibrierungsdaten (wenn byte[1] == 0x32)
+### Byte-Positionen für Kalibrierungsdaten (wenn byte[1] == 0x21)
 
 | Kalibrierungsstufe | Top-Right (TR) | Bottom-Right (BR) | Top-Left (TL) | Bottom-Left (BL) |
 |--------------------|----------------|--------------------|---------------|-------------------|
