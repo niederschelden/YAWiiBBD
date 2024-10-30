@@ -45,7 +45,7 @@ sudo apt-get install bluetooth libbluetooth-dev
 
 bash
 
-git clone https://github.com/username/YAWiiBB.git
+git clone https://github.com/niederschelden/YAWiiBBD
 cd YAWiiBB
 
 ### Kompilieren Sie den Code:
