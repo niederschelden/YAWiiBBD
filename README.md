@@ -15,6 +15,8 @@ YAWiiBB kann:
 - Kalibrierungsdaten verarbeiten
 - Erweiterte Ausgabe und Debugging über das `YAWIIBB_EXTENDED`-Flag konfigurieren
 
+Siehe auch [Doxygen Doku](https://niederschelden.github.io/YAWiiBBD/files.html)
+
 ### Hauptmerkmale
 
 - **Flexibilität**: Erweiterter Debug-Modus lässt sich per `YAWIIBB_EXTENDED` aktivieren
