@@ -65,18 +65,19 @@ gcc -Wall -o YAWiiBB YAWiiBBD.c YAWiiBBessentials.c -lbluetooth -DYAWIIBB_EXTEND
 bash
 ./YAWiiBB
 
-## Byte-Zuordnungen im Datenpuffer
+## Byte-Zuordnungen im Datenstrom
 
-### Byte-Positionen der Sensordaten
+### Byte-Positionen der Sensordaten (wenn byte[1] == 0x32)
 
 | Sensorposition    | Bytes | Beschreibung                     |
 |-------------------|-------|----------------------------------|
+| Button            | 3     | 0x08 == gedrückt                 |
 | Top-Right (TR)    | 4-5   | Rohdaten des Sensors oben rechts |
 | Bottom-Right (BR) | 6-7   | Rohdaten des Sensors unten rechts|
 | Top-Left (TL)     | 8-9   | Rohdaten des Sensors oben links  |
 | Bottom-Left (BL)  | 10-11 | Rohdaten des Sensors unten links  |
 
-### Byte-Positionen für Kalibrierungsdaten
+### Byte-Positionen für Kalibrierungsdaten (wenn byte[1] == 0x32)
 
 | Kalibrierungsstufe | Top-Right (TR) | Bottom-Right (BR) | Top-Left (TL) | Bottom-Left (BL) |
 |--------------------|----------------|--------------------|---------------|-------------------|
