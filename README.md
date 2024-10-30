@@ -80,9 +80,9 @@ bash
 ### Byte-Positionen für Kalibrierungsdaten (wenn byte[1] == 0x21)
 
 | Kalibrierungsstufe | Top-Right (TR) | Bottom-Right (BR) | Top-Left (TL) | Bottom-Left (BL) |
-|--------------------|----------------|--------------------|---------------|-------------------|
-| 0 kg               | 7-8            | 9-10              | 11-12         | 13-14            |
-| 17 kg              | 15-16          | 17-18             | 19-20         | 21-22            |
+|------------------------------|----------------|--------------------|---------------|-------------------|
+| 0 kg (erstes Datenpaket)     | 7-8            | 9-10              | 11-12         | 13-14            |
+| 17 kg (erstes Datenpaket)    | 15-16          | 17-18             | 19-20         | 21-22            |
 | 34 kg (zweites Datenpaket)   | 7-8            | 9-10              | 11-12         | 13-14            |
 
 ### Anpassung des Log-Levels
