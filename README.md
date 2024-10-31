@@ -35,17 +35,18 @@ Siehe auch [Doxygen Doku](https://niederschelden.github.io/YAWiiBBD/files.html)
 
 ### Installieren Sie die erforderlichen Pakete unter Ubuntu/Debian:
 
-
 sudo apt-get update
-sudo apt-get install bluetooth libbluetooth-dev
+sudo apt-get install bluez libbluetooth-dev build-essential
+
 
 ## Installation
 
 ### Klonen Sie das Repository:
 
-bash
+```bash
 
 git clone https://github.com/niederschelden/YAWiiBBD
+
 cd YAWiiBB
 
 ### Kompilieren Sie den Code:
