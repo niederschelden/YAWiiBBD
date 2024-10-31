@@ -6,6 +6,29 @@ Statt mich mit schweren C/C++-Treibern herumzuschlagen, die mir einfach zu kompl
 
 Die Bibliothek ist unter der GNU General Public License lizenziert und steht in keinerlei Verbindung zu Nintendo. Ich entwickle das Projekt unabhängig und nutze lediglich die Hardware.
 
+> **Wichtiger Hinweis:** 
+> ## Zuerst lesen
+> Bevor du dich in dieses Projekt stürzt, nimm dir bitte einen Moment Zeit, um [keldu/WiiWeight](https://github.com/keldu/WiiWeight) zu überprüfen. Der Autor hat eine deutlich effizientere Methode entwickelt, um Daten von der Wii Balance Board zu extrahieren.
+>
+> ### Warum du dies in Betracht ziehen solltest
+>
+> Die von **keldu** bereitgestellte Lösung nutzt den internen Bluetooth-Stack von Linux, um das notwendige Pairing und die Datenerfassung von der Wii Balance Board zu handhaben. Das bedeutet, dass du dich nicht mit der Low-Level-Bluetooth-Kommunikation oder den Komplexitäten beim Parsen von Rohdaten von der Plattform auseinandersetzen musst.
+>
+> ### Technische Details
+>
+> - **Bluetooth-Management**: Das Linux-Bluetooth-Subsystem bietet ein robustes Framework zur Verwaltung von Bluetooth-Geräten. Es kümmert sich nahtlos um die Geräteerkennung, das Pairing und die Verbindungsverwaltung, sodass du dich auf höherwertige Funktionalitäten konzentrieren kannst.
+>
+> - **Datenextraktion**: Anstatt die Rohdaten manuell vom Eingabegerät zu lesen, verwendet keldu's Implementierung die integrierte Bluetooth-Unterstützung in Linux. Dadurch wird sichergestellt, dass alle relevanten Daten von der Wii Balance Board effektiv erfasst werden, ohne dass umfangreicher zusätzlicher Code erforderlich ist.
+>
+> - **Benutzerfreundlichkeit**: Durch die Nutzung einer etablierten Bibliothek kannst du erheblich Entwicklungszeit sparen und die Komplexität deines Projekts reduzieren. Das bedeutet, dass du schnell mit der Implementierung von Funktionen fortfahren kannst, anstatt dich mit den Feinheiten der Gerätekommunikation zu beschäftigen.
+>
+> ### Fazit
+>
+> Es ist definitiv sehr empfehlenswert keldu's Arbeit anzuschauen, wenn du ein Projekt mit der Wii Balance Board in Betracht ziehst. Dieser Ansatz kann dir Zeit und Mühe sparen und möglicherweise zu einer stabileren und zuverlässigeren Implementierung führen. Erfinde das Rad nicht neu; nutze bestehende Lösungen für optimale Ergebnisse!
+
+
+# Du wurdest gewarnt: Wenn du jetzt weiterliest, betrittst du die Welt des Kopfschmerzes.
+
 ## Funktionsübersicht
 
 YAWiiBB kann:

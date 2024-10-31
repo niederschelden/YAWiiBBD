@@ -6,6 +6,30 @@ Instead of dealing with heavy C/C++ drivers, which were too complex, I created m
 
 The library is licensed under the GNU General Public License and is not affiliated with Nintendo. I am developing this project independently, using only the hardware.
 
+```markdown
+> **Important Notice:** 
+> ## Read first
+>Before diving into this project, please take a moment to check out [keldu/WiiWeight](https://github.com/keldu/WiiWeight). The author has developed a significantly more efficient method to extract data from the Wii Balance Board.
+>
+> ### Why You Should Consider This
+>
+> The solution provided by **keldu** leverages the internal Linux Bluetooth stack to handle all the necessary pairing and data extraction from the Wii Balance Board. This means you won't have to deal with low-level Bluetooth communication or the complexities involved in parsing raw data from the board.
+>
+> ### Technical Details
+>
+> - **Bluetooth Management**: The Linux Bluetooth subsystem provides a robust framework for managing Bluetooth devices. It handles device discovery, pairing, and connection management seamlessly, allowing you to focus on higher-level functionality.
+>
+> - **Data Extraction**: Instead of manually reading raw data from the input device, keldu's implementation uses the built-in Bluetooth support in Linux. This ensures that all relevant data from the Wii Balance Board is captured effectively without requiring extensive additional code.
+>
+> - **Ease of Use**: By utilizing an established library, you can save a significant amount of development time and reduce the complexity of your project. This means you can quickly move on to implementing features rather than dealing with the intricacies of device communication.
+>
+> ### Conclusion
+>
+> In summary, if you're considering a project involving the Wii Balance Board, it's highly recommended to explore keldu's work. This approach can save you time, effort, and potentially lead to a more stable and reliable implementation. Don’t reinvent the wheel; leverage existing solutions for optimal results!
+```
+# You Have Been Warned: Continuing Will Lead You Into a World of Headaches
+
+
 ## Function Overview
 
 YAWiiBB can:
