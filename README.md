@@ -51,21 +51,21 @@ cd YAWiiBB
 ```
 ### Kompilieren Sie den Code:
 
-bash
+```bash
 
 gcc -Wall -o YAWiiBB YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
-
+```
 oder alternativ mit Erweiterungen:
 
-bash
+```bash
 
-gcc -Wall -o YAWiiBB YAWiiBBD.c YAWiiBBessentials.c -lbluetooth -DYAWIIBB_EXTENDED
-
+gcc -Wall -o YAWiiBBD YAWiiBBD.c YAWiiBBessentials.c -lbluetooth -DYAWIIBB_EXTENDED
+```
 ## Ausführen
 
-bash
-./YAWiiBB
-
+```bash
+./YAWiiBBD
+```
 Beenden mit Enter oder Druck auf den Hauptknopf
 
 ## Byte-Zuordnungen im Datenstrom
@@ -97,7 +97,7 @@ LED-Zustand: Ist glaube ich, im Byte 4 und möglicherweise auch in Byte 5 codier
 
 Die folgenden Kommandos werden zur Kommunikation mit dem Wii Balance Board verwendet. Diese Befehle wurden von der [WiiBrew-Website](https://wiibrew.org/wiki/Wii_Balance_Board#Wii_Initialisation_Sequence) sowie aus den oben genannten python scripten übernommen. Ich habe festgestellt, dass nicht alle Kommandos tatsächlich benötigt werden, um Daten vom Board zu erhalten. Einige Kommandos können in der `main`-Funktion deaktiviert werden, indem du ihre entsprechenden Flags auf `false` setzt:
 
-
+```Markdown
 WiiBalanceBoard board = {
     .needStatus = true,
     .needCalibration = true,
@@ -106,7 +106,7 @@ WiiBalanceBoard board = {
     .needDumpStart = true,
     .is_running = true
 };
-
+```
 ### Befehle
 
 Status-Befehl:
