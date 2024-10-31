@@ -87,7 +87,10 @@ Beenden mit Enter oder Druck auf den Hauptknopf
 | 17 kg (erstes Datenpaket)    | 15-16          | 17-18             | 19-20         | 21-22            |
 | 34 kg (zweites Datenpaket)   | 7-8            | 9-10              | 11-12         | 13-14            |
 
+### Byte-Positionen für Kalibrierungsdaten (wenn byte[1] == 0x20)
 
+Batteriestatus: Die Batteriestatuswerte sind in den Bytes 7-8 codiert und zur basis 200 (also wäre 100 = 50%).
+LED-Zustand: Ist glaube ich, im Byte 4 und möglicherweise auch in Byte 5 codiert.
 
 ## Wii Balance Board Befehle
 
