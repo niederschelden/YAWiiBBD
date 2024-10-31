@@ -91,7 +91,7 @@ Beenden mit Enter oder Druck auf den Hauptknopf
 
 ## Wii Balance Board Befehle
 
-Die folgenden Kommandos werden zur Kommunikation mit dem Wii Balance Board verwendet. Diese Befehle wurden von der [WiiBrew-Website](https://wiibrew.org/wiki/Wii_Balance_Board#Wii_Initialisation_Sequence) übernommen. Ich habe festgestellt, dass nicht alle Kommandos tatsächlich benötigt werden, um Daten vom Board zu erhalten. Einige Kommandos können in der `main`-Funktion deaktiviert werden, indem du ihre entsprechenden Flags auf `false` setzt:
+Die folgenden Kommandos werden zur Kommunikation mit dem Wii Balance Board verwendet. Diese Befehle wurden von der [WiiBrew-Website](https://wiibrew.org/wiki/Wii_Balance_Board#Wii_Initialisation_Sequence) sowie aus den oben genannten python scripten übernommen. Ich habe festgestellt, dass nicht alle Kommandos tatsächlich benötigt werden, um Daten vom Board zu erhalten. Einige Kommandos können in der `main`-Funktion deaktiviert werden, indem du ihre entsprechenden Flags auf `false` setzt:
 
 
 WiiBalanceBoard board = {
