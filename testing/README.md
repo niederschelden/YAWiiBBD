@@ -5,13 +5,12 @@ Dieser Code basiert auf den Ideen von [keldu/WiiWeight](https://github.com/keldu
 Um das Gerät zu identifizieren, benötigst du `evtest`:
 
 ```bash
-gcc -o test interesting_option.c
+gcc -o test newTry.c
+sudo setcap cap_dac_read_search+ep ./dateiname
+# Starte das Programm 
+./list
+#Wähle nicht die NUmmer!!, sondern die devicenummer aus
 
-# Finde das Gerät heraus und beende evtest
-evtest
-
-# Starte das Programm mit der entsprechenden Event-Nummer
-./test /dev/input/event[nummer]
 ```
 # Just a Try
 
@@ -20,13 +19,10 @@ This code is inspired by the ideas of [keldu/WiiWeight](https://github.com/keldu
 You will need evtest to identify the device:
 
 ```bash
-
-gcc -o test interesting_option.c
-
-# Find the device and exit evtest
-evtest
-
-# Run the program with the appropriate event number
-./test /dev/input/event[number]
+gcc -o test newTry.c
+sudo setcap cap_dac_read_search+ep ./dateiname
+# run the  program 
+./list
+#choose the devicenumber at end of the line; not the number in front
 
 ```
