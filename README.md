@@ -87,6 +87,44 @@ Beenden mit Enter oder Druck auf den Hauptknopf
 | 17 kg (erstes Datenpaket)    | 15-16          | 17-18             | 19-20         | 21-22            |
 | 34 kg (zweites Datenpaket)   | 7-8            | 9-10              | 11-12         | 13-14            |
 
+
+
+## Wii Balance Board Befehle
+
+Die folgenden Kommandos werden zur Kommunikation mit dem Wii Balance Board verwendet. Diese Befehle wurden von der [WiiBrew-Website](https://wiibrew.org/wiki/Wii_Balance_Board#Wii_Initialisation_Sequence) übernommen. Ich habe festgestellt, dass nicht alle Kommandos tatsächlich benötigt werden, um Daten vom Board zu erhalten. Einige Kommandos können in der `main`-Funktion deaktiviert werden, indem du ihre entsprechenden Flags auf `false` setzt:
+
+
+WiiBalanceBoard board = {
+    .needStatus = true,
+    .needCalibration = true,
+    .needActivation = true,
+    .led = false,
+    .needDumpStart = true,
+    .is_running = true
+};
+
+### Befehle
+
+Status-Befehl:
+const unsigned char status_command[] = { 0x52, 0x12, 0x00, 0x32 };
+
+Aktivierungsbefehl:
+const unsigned char activate_command[] = { 0x52, 0x13, 0x04 };
+
+Kalibrierungsbefehl:
+const unsigned char calibration_command[] = { 0x52, 0x17, 0x04, 0xa4, 0x00, 0x24, 0x00, 0x18 };
+
+LED ein-/aus-schalten:
+const unsigned char led_on_command[] = { 0x52, 0x11, 0x10 };
+
+Daten-Dump-Befehl:
+const unsigned char data_dump_command[] = { 0x52, 0x15, 0x00, 0x32 };
+
+### Hinweise
+
+Die meisten dieser Kommandos werden nicht zwingend benötigt, um Daten zu empfangen. Sie wurden jedoch in den Code integriert, da der genaue Zweck einiger Befehle möglicherweise nicht vollständig bekannt ist. Es wird empfohlen, nur die Kommandos zu aktivieren, die für deine spezifischen Anforderungen notwendig sind.
+
+
 ### Anpassung des Log-Levels
 
 Das Log-Level wird über LogLevel gesteuert. Standardmäßig ist RAW aktiviert; mit YAWIIBB_EXTENDED gibt es zusätzliche Level (DECODE, DEBUG, VERBOSE).
