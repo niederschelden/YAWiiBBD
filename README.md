@@ -1,3 +1,6 @@
+[goto german](https://github.com/niederschelden/YAWiiBBD/blob/main/LIESMICH.md)
+
+
 # YAWiiBB - Yet Another Wii Balance Board Driver
 
 YAWiiBB is a simple C library to use the Wii Balance Board without the Wii console, specifically for physiotherapy exercises. Initially, I was excited about projects like [namacha's wiiboard](https://github.com/namacha/wiiboard) and [Pierrick Koch's wiiboard](https://github.com/PierrickKoch/wiiboard). However, since `pyBluez` seems no longer maintained, I couldn’t run a Python solution with Python 3.
