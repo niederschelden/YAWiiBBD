@@ -2,13 +2,12 @@
 
 Dieser Code basiert auf den Ideen von [keldu/WiiWeight](https://github.com/keldu/WiiWeight), wurde jedoch von mir neu geschrieben.
 
-Um das Gerät zu identifizieren, benötigst du `evtest`:
-
 ```bash
 gcc -o test newTry.c
-sudo setcap cap_dac_read_search+ep ./dateiname
+# rechte erhöhen um devices zu lesen
+sudo setcap cap_dac_read_search+ep ./test
 # Starte das Programm 
-./list
+./test
 #Wähle nicht die NUmmer!!, sondern die devicenummer aus
 
 ```
@@ -16,13 +15,12 @@ sudo setcap cap_dac_read_search+ep ./dateiname
 
 This code is inspired by the ideas of [keldu/WiiWeight](https://github.com/keldu/WiiWeight) but has been rewritten by me.
 
-You will need evtest to identify the device:
-
 ```bash
 gcc -o test newTry.c
-sudo setcap cap_dac_read_search+ep ./dateiname
+# grat extended rights
+sudo setcap cap_dac_read_search+ep ./test
 # run the  program 
-./list
+./test
 #choose the devicenumber at end of the line; not the number in front
 
 ```
