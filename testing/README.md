@@ -1,5 +1,3 @@
-markdown
-
 # Nur ein Versuch
 
 Dieser Code basiert auf den Ideen von [keldu/WiiWeight](https://github.com/keldu/WiiWeight), wurde jedoch von mir neu geschrieben.
