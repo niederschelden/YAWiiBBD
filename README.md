@@ -138,6 +138,17 @@ Most of these commands are not strictly necessary for data reception, but are in
 
 The log level is controlled via `LogLevel`. By default, RAW is active; with `YAWIIBB_EXTENDED`, additional levels (DECODE, DEBUG, VERBOSE) are available.
 
+
+To adjust the output level, set the desired option in YAWiiBBD.c before compiling:
+
+```c
+
+#ifdef YAWIIBB_EXTENDED
+const LogLevel debug_level = DEBUG; // Options: RAW, DECODE, DEBUG, VERBOSE
+#else...
+```
+This way, compiling with the -DYAWIIBB_EXTENDED flag enables additional logging levels.
+
 ## Licenses and Disclaimer
 
 This project is licensed under the GNU General Public License v3.0. For further details, see the LICENSE file.

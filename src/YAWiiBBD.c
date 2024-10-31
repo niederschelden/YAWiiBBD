@@ -26,7 +26,7 @@
  */
 
 #ifdef YAWIIBB_EXTENDED
-const LogLevel debug_level = DEBUG; 
+const LogLevel debug_level = DEBUG; //Options RAW, DECODE, DEBUG, (VERBOSE)
 #else
 const LogLevel debug_level = RAW; 
 #endif // YAWIIBB_EXTENDED
