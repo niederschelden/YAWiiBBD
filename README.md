@@ -90,7 +90,7 @@ Beenden mit Enter oder Druck auf den Hauptknopf
 
 ### Byte-Positionen für Kalibrierungsdaten (wenn byte[1] == 0x20)
 
-Batteriestatus: Die Batteriestatuswerte sind in den Bytes 7-8 codiert und zur basis 200 (also wäre 100 = 50%).
+Batteriestatus: Die Batteriestatuswerte sind in den Bytes 7(-8?) codiert und zur basis 200 (also wäre 100 = 50%).
 LED-Zustand: Ist glaube ich, im Byte 4 und möglicherweise auch in Byte 5 codiert.
 
 ## Wii Balance Board Befehle
@@ -110,20 +110,25 @@ WiiBalanceBoard board = {
 ### Befehle
 
 Status-Befehl:
-const unsigned char status_command[] = { 0x52, 0x12, 0x00, 0x32 };
-
+```Markdown
+status_command[] = { 0x52, 0x12, 0x00, 0x32 };
+```
 Aktivierungsbefehl:
-const unsigned char activate_command[] = { 0x52, 0x13, 0x04 };
-
+```Markdown
+activate_command[] = { 0x52, 0x13, 0x04 };
+```
 Kalibrierungsbefehl:
-const unsigned char calibration_command[] = { 0x52, 0x17, 0x04, 0xa4, 0x00, 0x24, 0x00, 0x18 };
-
+```Markdown
+calibration_command[] = { 0x52, 0x17, 0x04, 0xa4, 0x00, 0x24, 0x00, 0x18 };
+```
 LED ein-/aus-schalten:
-const unsigned char led_on_command[] = { 0x52, 0x11, 0x10 };
-
+```Markdown
+led_on_command[] = { 0x52, 0x11, 0x10 };
+```
 Daten-Dump-Befehl:
-const unsigned char data_dump_command[] = { 0x52, 0x15, 0x00, 0x32 };
-
+```Markdown
+data_dump_command[] = { 0x52, 0x15, 0x00, 0x32 };
+```
 ### Hinweise
 
 Die meisten dieser Kommandos werden nicht zwingend benötigt, um Daten zu empfangen. Sie wurden jedoch in den Code integriert, da der genaue Zweck einiger Befehle möglicherweise nicht vollständig bekannt ist. Es wird empfohlen, nur die Kommandos zu aktivieren, die für deine spezifischen Anforderungen notwendig sind.
