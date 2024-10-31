@@ -48,7 +48,7 @@ sudo apt-get install bluez libbluetooth-dev build-essential
 git clone https://github.com/niederschelden/YAWiiBBD
 
 cd YAWiiBB
-
+```
 ### Kompilieren Sie den Code:
 
 bash
