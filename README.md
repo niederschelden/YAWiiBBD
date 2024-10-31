@@ -50,7 +50,7 @@ cd YAWiiBB
 ### Compile the Code:
 
 ```bash
-gcc -Wall -o YAWiiBB YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
+gcc -Wall -o YAWiiBBD YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
 ```
 
 or alternatively with extensions:

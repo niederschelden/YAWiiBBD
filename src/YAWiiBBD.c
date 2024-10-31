@@ -17,7 +17,7 @@
  * @note Um die Anwendung zu kompilieren, verwenden Sie die folgenden Befehle:
  *       - Für die Standardversion: 
  *         @code
- *         gcc -Wall -o complex YAWiiBBD.c -lbluetooth
+ *         gcc -Wall -o simple YAWiiBBD.c -lbluetooth
  *         @endcode
  *       - Für die erweiterte Version:
  *         @code

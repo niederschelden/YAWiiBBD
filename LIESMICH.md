@@ -53,7 +53,7 @@ cd YAWiiBB
 
 ```bash
 
-gcc -Wall -o YAWiiBB YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
+gcc -Wall -o YAWiiBBD YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
 ```
 oder alternativ mit Erweiterungen:
 

@@ -118,7 +118,7 @@ Variables</h2></td></tr>
 <p >Diese Datei enthält die Hauptfunktionalität der Anwendung, einschließlich der Initialisierung der Verbindungen, der Hauptschleife zur Verarbeitung von Befehlen und der Verwaltung von Threads. Abhängig von den Kompilierungsflags kann die Debug-Stufe variieren, was die Protokollierung und den Status der Anwendung beeinflusst.</p>
 <p >Es wird eine Verbindung zum Wii Balance Board über Bluetooth hergestellt, und die Anwendung verarbeitet Daten in einer Schleife, solange das Board aktiv ist.</p>
 <dl class="section note"><dt>Note</dt><dd>Um die Anwendung zu kompilieren, verwenden Sie die folgenden Befehle:<ul>
-<li>Für die Standardversion: <div class="fragment"><div class="line">gcc -Wall -o complex YAWiiBBD.c -lbluetooth</div>
+<li>Für die Standardversion: <div class="fragment"><div class="line">gcc -Wall -o simple YAWiiBBD.c -lbluetooth</div>
 </div><!-- fragment --></li>
 <li>Für die erweiterte Version: <div class="fragment"><div class="line">gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth</div>
 </div><!-- fragment --> </li>
