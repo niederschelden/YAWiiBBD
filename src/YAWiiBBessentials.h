@@ -17,13 +17,8 @@
 #include <pthread.h>
 #include <ctype.h>
 
-// Bedingte Einbindung von YAWiiBBextended.h, wenn YAWIIBB_EXTENDED aktiviert ist
-
-
 #define WII_BALANCE_BOARD_ADDR "00:23:CC:43:DC:C2"  /**< Default MAC address for the Wii Balance Board */
 #define BUFFER_SIZE 24  /**< Buffer size for data reception */
-
-
 
 /** 
  * @enum LogLevel
@@ -92,6 +87,8 @@ void print_info(const LogLevel* is_debug_level, const char* message, const unsig
 
 /**
  * @brief Finds the Wii Balance Board by scanning nearby Bluetooth devices.
+ * 
+ * Requires the device to be in pairing mode and not jet paired
  *
  * This function scans for Bluetooth devices in the area and identifies the Wii
  * Balance Board based on its specific name. If found, the board’s MAC address
@@ -129,204 +126,204 @@ int connect_l2cap(const char* bdaddr_str, uint16_t psm);
 
 
 /**
- * @brief Verarbeitet das Senden eines Status-Kommandos an das Wii Balance Board.
+ * @brief Processes sending a status command to the Wii Balance Board.
  * 
- * Diese Funktion wird aufgerufen, wenn das Flag `needStatus` gesetzt ist, 
- * und schickt den entsprechenden Status-Befehl an das Board. 
+ * This function is called when the `needStatus` flag is set, 
+ * and sends the corresponding status command to the board. 
  * 
- * @param board Pointer zur WiiBalanceBoard-Struktur, die den aktuellen Status hält.
+ * @param board Pointer to the WiiBalanceBoard structure that holds the current status.
  */
 void handle_status(WiiBalanceBoard* board);
 
 /**
- * @brief Verarbeitet das Senden eines Kalibrierungs-Kommandos an das Wii Balance Board.
+ * @brief Processes sending a calibration command to the Wii Balance Board.
  * 
- * Diese Funktion wird aufgerufen, wenn das Flag `needCalibration` gesetzt ist, 
- * und schickt den entsprechenden Kalibrierungs-Befehl an das Board.
+ * This function is called when the `needCalibration` flag is set, 
+ * and sends the corresponding calibration command to the board.
  * 
- * @param board Pointer zur WiiBalanceBoard-Struktur, die den aktuellen Status hält.
+ * @param board Pointer to the WiiBalanceBoard structure that holds the current status.
  */
 void handle_calibration(WiiBalanceBoard* board);
 
 /**
- * @brief Verarbeitet das Senden eines LED-Anschalt-Kommandos an das Wii Balance Board.
+ * @brief Processes sending an LED on command to the Wii Balance Board.
  * 
- * Diese Funktion wird aufgerufen, wenn das LED-Flag `led` noch nicht gesetzt ist,
- * und schaltet die LED des Boards ein.
+ * This function is called when the LED flag `led` is not set,
+ * and turns on the board's LED.
  * 
- * @param board Pointer zur WiiBalanceBoard-Struktur, die den aktuellen Status hält.
+ * @param board Pointer to the WiiBalanceBoard structure that holds the current status.
  */
 void handle_led_on(WiiBalanceBoard* board);
 
 /**
- * @brief Verarbeitet das Senden eines Aktivierungs-Kommandos an das Wii Balance Board.
+ * @brief Processes sending an activation command to the Wii Balance Board.
  * 
- * Diese Funktion wird aufgerufen, wenn das Flag `needActivation` gesetzt ist, 
- * und schickt den entsprechenden Aktivierungs-Befehl an das Board.
+ * This function is called when the `needActivation` flag is set, 
+ * and sends the corresponding activation command to the board.
  * 
- * @param board Pointer zur WiiBalanceBoard-Struktur, die den aktuellen Status hält.
+ * @param board Pointer to the WiiBalanceBoard structure that holds the current status.
  */
 void handle_activation(WiiBalanceBoard* board);
 
 /**
- * @brief Verarbeitet das Senden eines Daten-Dump-Kommandos an das Wii Balance Board.
+ * @brief Processes sending a data dump command (continous report of readings) to the Wii Balance Board.
  * 
- * Diese Funktion wird aufgerufen, wenn das Flag `needDumpStart` gesetzt ist, 
- * und startet das kontinuierliche Übertragen der Board-Daten.
+ * This function is called when the `needDumpStart` flag is set, 
+ * and starts the continuous transmission of board data.
  * 
- * @param board Pointer zur WiiBalanceBoard-Struktur, die den aktuellen Status hält.
+ * @param board Pointer to the WiiBalanceBoard structure that holds the current status.
  */
 void handle_data_dump(WiiBalanceBoard* board);
 
 /**
- * @brief Verarbeitet empfangene Daten vom Wii Balance Board.
+ * @brief Processes received data from the Wii Balance Board.
  * 
- * Diese Funktion überprüft die empfangenen Daten und wertet sie aus. Falls
- * eine bestimmte Bedingung erfüllt ist (z.B. der Empfangscode zeigt einen Fehler),
- * wird der `is_running`-Status auf `false` gesetzt.
+ * This function checks the received data and evaluates it. If
+ * a certain condition is met (e.g., the receive code indicates an error),
+ * the `is_running` status is set to `false`.
  * 
- * @param bytes_read Anzahl der gelesenen Bytes im `buffer`.
- * @param buffer     Buffer, der die empfangenen Daten enthält.
- * @param board      Pointer zur WiiBalanceBoard-Struktur, die den aktuellen Status hält.
+ * @param bytes_read Number of bytes read in the `buffer`.
+ * @param buffer     Buffer containing the received data.
+ * @param board      Pointer to the WiiBalanceBoard structure that holds the current status.
  */
 void process_received_data(int bytes_read, unsigned char* buffer, WiiBalanceBoard* board);
 
 /**
- * @brief Thread-Funktion zur Überwachung der Benutzereingabe zur Steuerung des Wii Balance Boards.
+ * @brief Thread function for monitoring user input to control the Wii Balance Board.
  *
- * Wartet auf eine Benutzereingabe über die Konsole. Wenn der Benutzer die Eingabetaste
- * ohne weitere Zeichen drückt, setzt die Funktion das `is_running`-Flag des `WiiBalanceBoard`
- * Objekts auf `false` und beendet den Thread.
+ * Waits for user input via the console or the power button of the board. If the user presses the button or the enter key
+ * without additional characters, the function sets the `is_running` flag of the `WiiBalanceBoard`
+ * object to `false` and exits the thread.
  *
- * @param arg Ein void-Pointer auf das `WiiBalanceBoard`-Objekt, das der Funktion übergeben wird
- *            und zur Laufzeit aufgerufen wird, um den Status zu ändern.
- * @return Immer `NULL` – zeigt an, dass der Thread beendet ist.
+ * @param arg A void pointer to the `WiiBalanceBoard` object passed to the function
+ *            and called at runtime to change the status.
+ * @return Always `NULL` – indicates that the thread has terminated.
  */
-
 void* threadFunction(void* arg);
 
 /**
- * @brief Erstellt einen neuen Thread und startet die `threadFunction` zur Überwachung der Benutzersteuerung.
+ * @brief Creates a new thread and starts the `threadFunction` to monitor user control.
  *
- * Diese Funktion erstellt einen neuen Thread und weist ihn an, die Funktion `threadFunction` auszuführen.
- * Bei Fehlern wird eine Fehlermeldung ausgegeben, das `is_running`-Flag des Wii Balance Boards wird
- * auf `false` gesetzt, und das Programm wird mit einem Fehlercode beendet.
+ * This function creates a new thread and instructs it to execute the `threadFunction`.
+ * In case of errors, an error message is displayed, the `is_running` flag of the Wii Balance Board is
+ * set to `false`, and the program exits with an error code.
  *
- * @param board Zeiger auf das `WiiBalanceBoard`-Objekt, das die threadFunction überwacht.
- * @param threadId Zeiger auf die `pthread_t`-Variable, in der die ID des neuen Threads gespeichert wird.
+ * @param board Pointer to the `WiiBalanceBoard` object monitored by the threadFunction.
+ * @param threadId Pointer to the `pthread_t` variable where the ID of the new thread will be stored.
  */
-
 void createThread(WiiBalanceBoard* board, pthread_t* threadId);
 
 /**
- * @brief Validiert eine übergebene MAC-Adresse auf Format und Inhalt.
+ * @brief Validates a given MAC address for format and content.
  *
- * Überprüft, ob eine gültige MAC-Adresse als einziges Argument übergeben wurde.
- * Die Adresse muss genau 17 Zeichen lang sein und das Format `XX:XX:XX:XX:XX:XX` erfüllen,
- * wobei `X` ein Hexadezimalzeichen (`0-9`, `A-F`, `a-f`) ist. Die Funktion gibt
- * `1` zurück, wenn die Eingabe den Anforderungen entspricht, andernfalls `0`.
+ * Checks whether a valid MAC address has been passed as a single argument.
+ * The address must be exactly 17 characters long and conform to the format `XX:XX:XX:XX:XX:XX`,
+ * where `X` is a hexadecimal character (`0-9`, `A-F`, `a-f`). The function returns
+ * `1` if the input meets the requirements; otherwise, it returns `0`.
  * 
- * Bei ungültigem Format oder fehlerhaften Eingaben werden spezifische Fehlermeldungen
- * ausgegeben, die auf mögliche Ursachen hinweisen.
+ * In case of an invalid format or erroneous inputs, specific error messages
+ * are generated to indicate possible causes.
  *
- * @param argc Anzahl der an das Programm übergebenen Argumente.
- * @param argv Array mit den Argumenten, von denen das zweite (`argv[1]`) die MAC-Adresse sein sollte.
- * @return `1`, wenn die MAC-Adresse gültig ist, ansonsten `0`.
+ * @param argc Number of arguments passed to the program.
+ * @param argv Array of arguments, where the second (`argv[1]`) should be the MAC address.
+ * @return `1` if the MAC address is valid; otherwise, `0`.
  */
-
 int is_valid_mac(int argc, char *argv[]);
 
 #ifdef YAWIIBB_EXTENDED
 /**
- * @brief Verarbeitet die Kalibrierungsdaten vom Wii Balance Board.
+ * @brief Processes the calibration data from the Wii Balance Board.
  *
- * Diese Funktion analysiert einen Datenpuffer mit Kalibrierungsinformationen 
- * und extrahiert diese in das Kalibrierungsarray der übergebenen 
- * `WiiBalanceBoard`-Instanz. Die Kalibrierungsdaten sind 16-Bit-Werte, 
- * die in einem Big-Endian-Format gespeichert werden und aus 4 Paaren 
- * für jede der vier Ecken bestehen (topright, topleft, bottomright, bottomleft).
+ * This function analyzes a data buffer with calibration information 
+ * and extracts this into the calibration array of the passed 
+ * `WiiBalanceBoard` instance. The calibration data are 16-bit values 
+ * stored in a big-endian format and consist of 4 pairs 
+ * for each of the four corners (topright, topleft, bottomright, bottomleft).
  *
- * @param bytes_read Anzahl der tatsächlich gelesenen Bytes im Puffer.
- * @param buffer Zeiger auf einen Puffer mit den empfangenen Bytes. 
- *               Die erwartete Struktur ist:
- *               - Bytes 7-14: Kalibrierungssatz 0 (4 Paare, 8 Bytes)
- *               - Bytes 15-22: Kalibrierungssatz 1 (4 Paare, 8 Bytes)
- *               - Wenn Byte 15 == 0x00:
- *                 - Bytes 7-14: Kalibrierungssatz 2 (4 Paare, 8 Bytes)
- * @param board Zeiger auf eine Instanz von `WiiBalanceBoard`, 
- *              in die die Kalibrierungsdaten gespeichert werden.
+ * @param bytes_read Number of bytes actually read in the buffer.
+ * @param buffer Pointer to a buffer containing the received bytes. 
+ *               The expected structure is:
+ *               - Bytes 7-14: Calibration set 0 (4 pairs, 8 bytes)
+ *               - Bytes 15-22: Calibration set 1 (4 pairs, 8 bytes)
+ *               - If Byte 15 == 0x00:
+ *                 - Bytes 7-14: Calibration set 1
+ *                 - Bytes 15-22: Calibration set 2
+ * @param board Pointer to the `WiiBalanceBoard` instance where calibration data will be stored.
  *
- * @note Diese Funktion geht davon aus, dass der `buffer` mindestens 
- *       23 Bytes enthält, um die erwarteten Kalibrierungsdaten 
- *       verarbeiten zu können.
+ * @note This function assumes that the `buffer` contains at least 
+ *       23 bytes in order to process the expected calibration data.
  *
  * @details 
- * Der Ablauf der Funktion ist wie folgt:
- * 1. Überprüfung, ob das zweite Kalibrierungspaket empfangen wurde 
+ * The operation of the function is as follows:
+ * 1. Check if the second calibration packet has been received 
  *    (Byte 15 == 0x00).
- * 2. Wenn das zweite Paket nicht vorhanden ist:
- *    - Bytes 7-14 werden in `calibration[0]` gespeichert (Kalibrierungssatz 0).
- *    - Bytes 15-22 werden in `calibration[1]` gespeichert (Kalibrierungssatz 1).
- * 3. Wenn das zweite Paket vorhanden ist:
- *    - Bytes 7-14 werden in `calibration[2]` gespeichert (Kalibrierungssatz 2).
+ * 2. If the second packet is not present:
+ *    - Bytes 7-14 are stored in `calibration[0]` (Calibration set 0).
+ *    - Bytes 15-22 are stored in `calibration[1]` (Calibration set 1).
+ * 3. If the second packet is present:
+ *    - Bytes 7-14 are stored in `calibration[2]` (Calibration set 2).
  *
- * Beispiel:
- * - Empfangene Daten könnten folgendes enthalten:
- *   - buffer[7] = 0x01, buffer[8] = 0x02 (Kalibrierung 0, Paar 0)
- *   - buffer[15] = 0x00 (zeigt an, dass das zweite Paket nicht empfangen wurde)
- * 
- *   In diesem Fall würde die Funktion die Werte in `board->calibration[0]` 
- *   und `board->calibration[2]` speichern.
+ * Example:
+ * - Received data as an example:
+ *   - buffer[7] = 0x01, buffer[8] = 0x02 (Calibration 0, Pair 0)
+ * In this case, the function would store the values in `board->calibration[0][0]` 
+ *   - buffer[15] = 0x00 (indicates that this is packet 2)
+ * In this case, the function would only read bytes 7-8,[..],13-14 and store them in `board->calibration[2][i]`
  */
 void process_calibration_data(int* bytes_read, unsigned char* buffer, WiiBalanceBoard* board);
 
 
 /**
- * @brief Konvertiert zwei aufeinanderfolgende Bytes im Buffer aus Big-Endian-Darstellung in eine dezimale Ganzzahl.
+ * @brief Converts two consecutive bytes in the buffer from Big-Endian representation to a decimal integer.
  * 
- * Interpretiert zwei Bytes im angegebenen `buffer` ab der übergebenen `position` als eine
- * 16-Bit-Ganzzahl im Big-Endian-Format (höherwertiges Byte zuerst). Die Funktion gibt diese
- * Ganzzahl zurück, sodass sie in dezimaler Form ausgegeben werden kann.
+ * Interprets two bytes in the given `buffer` starting from the provided `position` as a
+ * 16-bit integer in Big-Endian format (most significant byte first). The function returns this
+ * integer so that it can be output in decimal form.
  * 
- * @param buffer     Zeiger auf den Buffer, der die Bytes enthält.
- * @param position   Die Startposition des höherwertigen Bytes im Buffer.
- * @return uint16_t  Die als dezimale Ganzzahl interpretierte Big-Endian-Zahl.
+ * @param buffer     Pointer to the buffer that contains the bytes.
+ * @param position   The starting position of the most significant byte in the buffer.
+ * @return uint16_t  The Big-Endian number interpreted as a decimal integer.
  */
 uint16_t bytes_to_int_big_endian(const unsigned char *buffer, size_t position, int* max);
 
 /**
- * @brief Berechnet das Gewicht in Gramm aus den Rohdaten des Wii Balance Boards.
+ * @brief Calculates the weight in grams from the raw data of the Wii Balance Board.
  *
- * Diese Funktion nutzt Kalibrierungsdaten des Wii Balance Boards, um basierend 
- * auf den gegebenen Rohdaten ein Gewicht in Gramm zu berechnen. Das Gewicht 
- * wird innerhalb von vier Kalibrierungsbereichen interpoliert oder, wenn der Wert 
- * über dem höchsten Kalibrierungsbereich liegt, linear extrapoliert.
+ * This function uses calibration data from the Wii Balance Board to calculate 
+ * a weight in grams based on the given raw data. The weight 
+ * is interpolated within four calibration ranges or, if the value 
+ * exceeds the highest calibration range, is linearly extrapolated.
  *
- * @param board Ein konstanter Zeiger auf die Struktur des Wii Balance Boards, die
- *              die Kalibrierungsdaten enthält.
- * @param raw   Der Rohdatenwert, der das Gewicht repräsentiert, gemessen von einer
- *              der vier Sensorpositionen (Top-Right, Bottom-Right, etc.).
- * @param pos   Die Position des Sensors (0 bis 3) für die Kalibrierungsdaten des Rohwerts.
- *              Muss im Bereich [0, 3] liegen.
+ * @param board A constant pointer to the Wii Balance Board structure that contains
+ *              the calibration data.
+ * @param raw   The raw data value representing the weight, measured from one
+ *              of the four sensor positions (Top-Right, Bottom-Right, etc.).
+ * @param pos   The position of the sensor (0 to 3) for the calibration data of the raw value.
+ *              Must be within the range [0, 3].
  *
- * @return Das berechnete Gewicht in Gramm als `uint16_t`.
+ * @return The calculated weight in grams as `uint16_t`.
  * 
- * @note Die Funktion kann bis zu einem Gewicht von 34 kg mit den gegebenen 
- *       Kalibrierungswerten interpolieren. Für Werte über diesem Bereich wird 
- *       das Gewicht linear extrapoliert.
+ * @note The function can interpolate weights up to 34 kg with the given 
+ *       calibration values. For values above this range, 
+ *       the weight is linearly extrapolated.
  *
- * Die Berechnung verwendet vier Fälle basierend auf den Rohdaten:
- *   - Wenn der Rohwert kleiner als die Kalibrierung für 0 kg ist, wird 0 g zurückgegeben.
- *   - Liegt der Rohwert zwischen den Kalibrierungen für 0 kg und 17 kg, erfolgt eine lineare 
- *     Interpolation zwischen diesen Punkten.
- *   - Liegt der Rohwert zwischen den Kalibrierungen für 17 kg und 34 kg, erfolgt eine 
- *     Interpolation innerhalb dieses Bereichs.
- *   - Wenn der Rohwert größer oder gleich der Kalibrierung für 34 kg ist, wird eine 
- *     lineare Extrapolation basierend auf dem letzten Bereich vorgenommen.
+ * The calculation uses four cases based on the raw data:
+ *   - If the raw value is less than the calibration for 0 kg, 0 g is returned.
+ *   - If the raw value is between the calibrations for 0 kg and 17 kg, linear 
+ *     interpolation occurs between these points.
+ *   - If the raw value is between the calibrations for 17 kg and 34 kg, 
+ *     interpolation occurs within this range.
+ *   - If the raw value is greater than or equal to the calibration for 34 kg, 
+ *     linear extrapolation is performed based on the last range.
  */
-
 uint16_t calc_mass(const WiiBalanceBoard* board, uint16_t raw, int pos);
 
+/**
+ * @brief Displays the stored calibration data.
+ *
+ * This function is solely for debugging purposes and is no longer used.
+ * If one wants to know whether the calibration data has been stored, they can implement it.
+ */
 void print_calibration_data(const WiiBalanceBoard* board);
 
 #endif //YAWIIBB_EXTENDED
