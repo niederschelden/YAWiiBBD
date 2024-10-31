@@ -196,6 +196,64 @@ void process_received_data(int bytes_read, unsigned char* buffer, WiiBalanceBoar
 }
 
 
+void* threadFunction(void* arg) {
+    WiiBalanceBoard* board = (WiiBalanceBoard*)arg;  // Typumwandlung
+    char ch;
+
+    // Warten auf die Benutzereingabe
+    while (true) {
+        ch = getchar();
+        if (ch == '\n') {  // Wenn nur Enter gedrückt wird
+            board->is_running = false;  // Setze die boolesche Variable auf false
+            break; 
+        }
+    }
+
+    return NULL;  // Thread beendet sich
+}
+
+void createThread(WiiBalanceBoard* board, pthread_t* threadId) {
+    // Thread erstellen
+    if (pthread_create(threadId, NULL, threadFunction, (void*)board) != 0) {
+        perror("Fehler beim Erstellen des Threads");
+        board->is_running = false;  // Setze die boolesche Variable auf false
+        exit(1);
+    }
+}
+
+int is_valid_mac(int argc, char *argv[]) {
+    // Überprüfen, ob genau ein Argument (MAC-Adresse) übergeben wurde - falls nicht, ohne fehler zurück
+    if (argc != 2) {
+        return 0;
+    }
+
+    const char *mac = argv[1];
+
+    // MAC-Adresse sollte 17 Zeichen lang sein
+    if (strlen(mac) != 17) {
+        perror("Fehler: MAC-Adresse muss genau 17 Zeichen lang sein.\n");
+        return 0;
+    }
+
+    // Prüfen, ob die MAC-Adresse das Format XX:XX:XX:XX:XX:XX hat
+    for (int i = 0; i < 17; i++) {
+        if (i % 3 == 2) {
+            // Alle dritten Zeichen sollten Doppelpunkte sein
+            if (mac[i] != ':') {
+                perror("Fehler: Ungültiges Format. Verwenden Sie das Format XX:XX:XX:XX:XX:XX.\n");
+                return 0;
+            }
+        } else {
+            // Alle anderen Zeichen sollten Hexadezimalzahlen sein
+            if (!isxdigit(mac[i])) {
+                perror("Fehler: Ungültiges Zeichen in der MAC-Adresse.\n");
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
 #ifdef YAWIIBB_EXTENDED
 
 
@@ -263,6 +321,24 @@ uint16_t calc_mass(const WiiBalanceBoard* board, uint16_t raw, int pos) {
         mass = 34000 + (uint16_t)(17000 * ((float)(raw - board->calibration[2][pos]) / 
                                              (board->calibration[2][pos] - board->calibration[1][pos])));
         return mass; // Gewicht in Gramm zurückgeben
+    }
+}
+
+void print_calibration_data(const WiiBalanceBoard* board) {
+    if (board == NULL) {
+        printf("Board ist nicht initialisiert.\n");
+        return;
+    }
+
+    printf("Kalibrierungsdaten:\n");
+    
+    for (int i = 0; i < 3; i++) {
+        printf("Kalibrierung %d:\n", i);
+        
+        for (int j = 0; j < 4; j++) {
+            printf("Position %d: %u\t", j, board->calibration[i][j]);
+        }
+        printf("\n"); // Neue Zeile nach jeder Kalibrierungsebene
     }
 }
 

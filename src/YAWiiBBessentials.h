@@ -15,6 +15,7 @@
 #include <bluetooth/hci.h>
 #include <bluetooth/hci_lib.h>
 #include <pthread.h>
+#include <ctype.h>
 
 // Bedingte Einbindung von YAWiiBBextended.h, wenn YAWIIBB_EXTENDED aktiviert ist
 
@@ -34,9 +35,9 @@
 typedef enum { 
     RAW,     /**< Outputs raw data as received without interpretation */
     #ifdef YAWIIBB_EXTENDED
-    DECODE,  /**< Outputs big endian converted value of two bytes */
-    DEBUG,   /**< Provides debugging information */
-    VERBOSE  /**< Outputs detailed information, including interpreted data */
+    DECODE,  /**< Outputs big endian converted value of two bytes, readings in gramm */
+    DEBUG,   /**< Provides debugging information and readings in Kilo */
+    VERBOSE  /**< currently unused */
     #endif //YAWIIBB_EXTENDED
 } LogLevel;
 
@@ -190,6 +191,50 @@ void handle_data_dump(WiiBalanceBoard* board);
  */
 void process_received_data(int bytes_read, unsigned char* buffer, WiiBalanceBoard* board);
 
+/**
+ * @brief Thread-Funktion zur Überwachung der Benutzereingabe zur Steuerung des Wii Balance Boards.
+ *
+ * Wartet auf eine Benutzereingabe über die Konsole. Wenn der Benutzer die Eingabetaste
+ * ohne weitere Zeichen drückt, setzt die Funktion das `is_running`-Flag des `WiiBalanceBoard`
+ * Objekts auf `false` und beendet den Thread.
+ *
+ * @param arg Ein void-Pointer auf das `WiiBalanceBoard`-Objekt, das der Funktion übergeben wird
+ *            und zur Laufzeit aufgerufen wird, um den Status zu ändern.
+ * @return Immer `NULL` – zeigt an, dass der Thread beendet ist.
+ */
+
+void* threadFunction(void* arg);
+
+/**
+ * @brief Erstellt einen neuen Thread und startet die `threadFunction` zur Überwachung der Benutzersteuerung.
+ *
+ * Diese Funktion erstellt einen neuen Thread und weist ihn an, die Funktion `threadFunction` auszuführen.
+ * Bei Fehlern wird eine Fehlermeldung ausgegeben, das `is_running`-Flag des Wii Balance Boards wird
+ * auf `false` gesetzt, und das Programm wird mit einem Fehlercode beendet.
+ *
+ * @param board Zeiger auf das `WiiBalanceBoard`-Objekt, das die threadFunction überwacht.
+ * @param threadId Zeiger auf die `pthread_t`-Variable, in der die ID des neuen Threads gespeichert wird.
+ */
+
+void createThread(WiiBalanceBoard* board, pthread_t* threadId);
+
+/**
+ * @brief Validiert eine übergebene MAC-Adresse auf Format und Inhalt.
+ *
+ * Überprüft, ob eine gültige MAC-Adresse als einziges Argument übergeben wurde.
+ * Die Adresse muss genau 17 Zeichen lang sein und das Format `XX:XX:XX:XX:XX:XX` erfüllen,
+ * wobei `X` ein Hexadezimalzeichen (`0-9`, `A-F`, `a-f`) ist. Die Funktion gibt
+ * `1` zurück, wenn die Eingabe den Anforderungen entspricht, andernfalls `0`.
+ * 
+ * Bei ungültigem Format oder fehlerhaften Eingaben werden spezifische Fehlermeldungen
+ * ausgegeben, die auf mögliche Ursachen hinweisen.
+ *
+ * @param argc Anzahl der an das Programm übergebenen Argumente.
+ * @param argv Array mit den Argumenten, von denen das zweite (`argv[1]`) die MAC-Adresse sein sollte.
+ * @return `1`, wenn die MAC-Adresse gültig ist, ansonsten `0`.
+ */
+
+int is_valid_mac(int argc, char *argv[]);
 
 #ifdef YAWIIBB_EXTENDED
 /**
@@ -281,6 +326,8 @@ uint16_t bytes_to_int_big_endian(const unsigned char *buffer, size_t position, i
  */
 
 uint16_t calc_mass(const WiiBalanceBoard* board, uint16_t raw, int pos);
+
+void print_calibration_data(const WiiBalanceBoard* board);
 
 #endif //YAWIIBB_EXTENDED
 #endif // YAWIIBBESSENTIALS_H
