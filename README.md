@@ -66,7 +66,7 @@ Balance Board in pairing Modus setzen, noch aber nicht pairen.
 ```bash
 ./YAWiiBBD
 ```
-Beenden mit Enter oder Druck auf den Hauptknopf
+Beenden mit Enter oder Druck auf den Hauptknopf.
 Am Ende wird ein Hinweis ausgegeben, wie man die Boardsuche durch Eingabe der korrekten MAC adresse überspringt
 
 ## Byte-Zuordnungen im Datenstrom
