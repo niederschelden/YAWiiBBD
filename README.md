@@ -6,7 +6,7 @@ Instead of dealing with heavy C/C++ drivers, which were too complex, I created m
 
 The library is licensed under the GNU General Public License and is not affiliated with Nintendo. I am developing this project independently, using only the hardware.
 
-```markdown
+
 > **Important Notice:** 
 > ## Read first
 >Before diving into this project, please take a moment to check out [keldu/WiiWeight](https://github.com/keldu/WiiWeight). The author has developed a significantly more efficient method to extract data from the Wii Balance Board.
@@ -26,7 +26,8 @@ The library is licensed under the GNU General Public License and is not affiliat
 > ### Conclusion
 >
 > In summary, if you're considering a project involving the Wii Balance Board, it's highly recommended to explore keldu's work. This approach can save you time, effort, and potentially lead to a more stable and reliable implementation. Don’t reinvent the wheel; leverage existing solutions for optimal results!
-```
+
+
 # You Have Been Warned: Continuing Will Lead You Into a World of Headaches
 
 
