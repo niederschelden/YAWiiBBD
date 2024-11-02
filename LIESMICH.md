@@ -24,7 +24,8 @@ Die Bibliothek ist unter der GNU General Public License lizenziert und steht in 
 >
 > ### Fazit
 >
-> Es ist definitiv sehr empfehlenswert keldu's Arbeit anzuschauen, wenn du ein Projekt mit der Wii Balance Board in Betracht ziehst. Dieser Ansatz kann dir Zeit und Mühe sparen und möglicherweise zu einer stabileren und zuverlässigeren Implementierung führen. Erfinde das Rad nicht neu; nutze bestehende Lösungen für optimale Ergebnisse!
+> 	Wenn du nur Messwerte bei Zustandsänderungen benötigst, verwende am besten Keldus Ansatz, um das Rad nicht neu zu erfinden. Eine Implementierung von Keldus Methode findest du im Verzeichnis „testing“.
+>   Falls du jedoch Zugriff auf Kalibrierungsdaten brauchst oder einen kontinuierlichen Messdatenstrom benötigst, wirf einen Blick auf meine Lösung, die speziell für diese Anwendungsfälle entwickelt wurde.
 
 
 # Du wurdest gewarnt: Wenn du jetzt weiterliest, betrittst du die Welt des Kopfschmerzes.
