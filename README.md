@@ -28,7 +28,8 @@ The library is licensed under the GNU General Public License and is not affiliat
 >
 > ### Conclusion
 >
-> In summary, if you're considering a project involving the Wii Balance Board, it's highly recommended to explore keldu's work. This approach can save you time, effort, and potentially lead to a more stable and reliable implementation. Don’t reinvent the wheel; leverage existing solutions for optimal results!
+> If you only need readings on state changes, consider using Keldu’s approach that avoids reinventing the wheel. You can find an implementation of Keldu’s method in the testing directory.
+> However, if you need access to calibration data or require a continuous stream of readings, take a look at my solution, which is designed for these specific use cases
 
 
 # You Have Been Warned: Continuing Will Lead You Into a World of Headaches
