@@ -383,6 +383,9 @@ void createThread(WiiBalanceBoard* board, pthread_t* threadId);
  */
 int is_valid_mac(int argc, char *argv[]);
 
+
+
+#ifdef YAWIIBB_EXTENDED
 /**
  * @defgroup ExtendedProcessing Extended Data Processing
  * @brief Functions for interpreting and displaying Wii Balance Board data.
@@ -398,14 +401,13 @@ int is_valid_mac(int argc, char *argv[]);
  * in a separate file, but due to challenges in managing memory access and avoiding 
  * segmentation faults, they remain integrated within this file for now.
  * 
- * To activate these extended features, compile with the `YAWIIBB_EXTENDED` flag.
+ * @note To activate these extended features, compile with the `YAWIIBB_EXTENDED` flag.
  *   @code
  *   gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
  *   @endcode
  * @{
  */
 
-#ifdef YAWIIBB_EXTENDED
 /**
  * @brief Processes the calibration data from the Wii Balance Board.
  *

@@ -91,8 +91,9 @@ Functions</h2></td></tr>
 <p >Functions for interpreting and displaying Wii Balance Board data. </p>
 <p >These functions provide additional capabilities for interpreting and converting raw data from the Wii Balance Board into a human-readable format. While not essential for the primary operation, they enable a deeper understanding of data processing and assist in debugging.</p>
 <p >Currently, these functions accept variables in some cases, though the goal is to refactor them to exclusively use pointers where possible to streamline memory management and improve efficiency. Additionally, they would ideally be organized in a separate file, but due to challenges in managing memory access and avoiding segmentation faults, they remain integrated within this file for now.</p>
-<p >To activate these extended features, compile with the <code>YAWIIBB_EXTENDED</code> flag. </p><div class="fragment"><div class="line">gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth</div>
-</div><!-- fragment --> <h2 class="groupheader">Function Documentation</h2>
+<dl class="section note"><dt>Note</dt><dd>To activate these extended features, compile with the <code>YAWIIBB_EXTENDED</code> flag. <div class="fragment"><div class="line">gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth</div>
+</div><!-- fragment --> </dd></dl>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="gad302657f1801e9590f4a7f454818b734" name="gad302657f1801e9590f4a7f454818b734"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gad302657f1801e9590f4a7f454818b734">&#9670;&nbsp;</a></span>bytes_to_int_big_endian()</h2>
 
