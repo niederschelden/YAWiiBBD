@@ -1,4 +1,8 @@
 #include "YAWiiBBessentials.h"
+/**
+ * @file YAWiiBBessentials.c
+ * @brief Core file for funktions predifined in YAWiiBBessentials.h.
+ */
 
 
 // Kommandos als konstante Byte-Arrays wie in der Header Datei beschrieben
