@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['send_5fcommand_0',['send_command',['../YAWiiBBessentials_8c.html#a3ac7ea94309bcc68a18c1a6559389e54',1,'send_command(int sock, const unsigned char *command, int length):&#160;YAWiiBBessentials.c'],['../YAWiiBBessentials_8h.html#a3ac7ea94309bcc68a18c1a6559389e54',1,'send_command(int sock, const unsigned char *command, int length):&#160;YAWiiBBessentials.c']]],
-  ['status_5fcommand_1',['status_command',['../YAWiiBBessentials_8c.html#a57079d2070001acbc11e3a1dc3ee255c',1,'status_command():&#160;YAWiiBBessentials.c'],['../YAWiiBBessentials_8h.html#a57079d2070001acbc11e3a1dc3ee255c',1,'status_command():&#160;YAWiiBBessentials.c']]]
+  ['raw_0',['RAW',['../YAWiiBBessentials_8h.html#aca1fd1d8935433e6ba2e3918214e07f9abdeded99fe7d3f2773014a9a2cfb73d7',1,'YAWiiBBessentials.h']]],
+  ['receive_5fsock_1',['receive_sock',['../structWiiBalanceBoard.html#a08f14a3321220a786ed69ee26ea53794',1,'WiiBalanceBoard']]]
 ];

@@ -76,6 +76,9 @@ $(function() {
   <div class="headertitle"><div class="title">YAWiiBBessentials.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Header file for core definitions and utility functions used in the YAWiiBB project.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
@@ -93,7 +96,7 @@ Include dependency graph for YAWiiBBessentials.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="YAWiiBBessentials_8h__incl.png" border="0" usemap="#asrc_2YAWiiBBessentials_8h" alt=""/></div>
 <map name="asrc_2YAWiiBBessentials_8h" id="asrc_2YAWiiBBessentials_8h">
-<area shape="rect" title=" " alt="" coords="535,5,713,32"/>
+<area shape="rect" title="Header file for core definitions and utility functions used in the YAWiiBB project." alt="" coords="535,5,713,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,72,107"/>
 <area shape="rect" title=" " alt="" coords="97,80,167,107"/>
 <area shape="rect" title=" " alt="" coords="192,80,267,107"/>
@@ -113,8 +116,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="YAWiiBBessentials_8h__dep__incl.png" border="0" usemap="#asrc_2YAWiiBBessentials_8hdep" alt=""/></div>
 <map name="asrc_2YAWiiBBessentials_8hdep" id="asrc_2YAWiiBBessentials_8hdep">
-<area shape="rect" title=" " alt="" coords="62,5,239,32"/>
-<area shape="rect" href="YAWiiBBD_8c.html" title="Hauptdatei für die YAWiiBB&#45;Anwendung, die die Interaktion mit einem Wii Balance Board ermöglicht." alt="" coords="5,80,125,107"/>
+<area shape="rect" title="Header file for core definitions and utility functions used in the YAWiiBB project." alt="" coords="62,5,239,32"/>
+<area shape="rect" href="YAWiiBBD_8c.html" title="Core file for the YAWiiBB application, facilitating interaction with a Wii Balance Board." alt="" coords="5,80,125,107"/>
 <area shape="rect" href="YAWiiBBessentials_8c.html" title=" " alt="" coords="149,80,325,107"/>
 </map>
 </div>
@@ -147,32 +150,32 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a30bba7053a54749bc3fae2ccbe8a49c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#a30bba7053a54749bc3fae2ccbe8a49c2">print_info</a> (const <a class="el" href="YAWiiBBessentials_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> *is_debug_level, const char *message, const unsigned char *<a class="el" href="YAWiiBBessentials_8h.html#acab2203504e72e5e674d3174e0bd7d5e">buffer</a>, int length, const <a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
-<tr class="memdesc:a30bba7053a54749bc3fae2ccbe8a49c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs messages with different verbosity levels.  <a href="YAWiiBBessentials_8h.html#a30bba7053a54749bc3fae2ccbe8a49c2">More...</a><br /></td></tr>
+<tr class="memdesc:a30bba7053a54749bc3fae2ccbe8a49c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs messages with different verbosity levels, providing diagnostics and raw data output.  <a href="YAWiiBBessentials_8h.html#a30bba7053a54749bc3fae2ccbe8a49c2">More...</a><br /></td></tr>
 <tr class="separator:a30bba7053a54749bc3fae2ccbe8a49c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae475fce3cc47a9f2e1fcb1efafbb7aed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#ae475fce3cc47a9f2e1fcb1efafbb7aed">find_wii_balance_board</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
-<tr class="memdesc:ae475fce3cc47a9f2e1fcb1efafbb7aed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the Wii Balance Board by scanning nearby Bluetooth devices.  <a href="YAWiiBBessentials_8h.html#ae475fce3cc47a9f2e1fcb1efafbb7aed">More...</a><br /></td></tr>
-<tr class="separator:ae475fce3cc47a9f2e1fcb1efafbb7aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ac7ea94309bcc68a18c1a6559389e54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#a3ac7ea94309bcc68a18c1a6559389e54">send_command</a> (int sock, const unsigned char *command, int length)</td></tr>
-<tr class="memdesc:a3ac7ea94309bcc68a18c1a6559389e54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a command to the Wii Balance Board over the control socket.  <a href="YAWiiBBessentials_8h.html#a3ac7ea94309bcc68a18c1a6559389e54">More...</a><br /></td></tr>
-<tr class="separator:a3ac7ea94309bcc68a18c1a6559389e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac548fb87e985634984dabe7ba4774b09"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#ac548fb87e985634984dabe7ba4774b09">connect_l2cap</a> (const char *bdaddr_str, uint16_t psm)</td></tr>
-<tr class="memdesc:ac548fb87e985634984dabe7ba4774b09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establishes a L2CAP connection with the Wii Balance Board.  <a href="YAWiiBBessentials_8h.html#ac548fb87e985634984dabe7ba4774b09">More...</a><br /></td></tr>
-<tr class="separator:ac548fb87e985634984dabe7ba4774b09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad059069d8a9991634ede9effc149edee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#ad059069d8a9991634ede9effc149edee">handle_status</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
-<tr class="memdesc:ad059069d8a9991634ede9effc149edee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes sending a status command to the Wii Balance Board.  <a href="YAWiiBBessentials_8h.html#ad059069d8a9991634ede9effc149edee">More...</a><br /></td></tr>
-<tr class="separator:ad059069d8a9991634ede9effc149edee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8232c599a51c7ab97c274d3e77b5f44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#ab8232c599a51c7ab97c274d3e77b5f44">handle_calibration</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
-<tr class="memdesc:ab8232c599a51c7ab97c274d3e77b5f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes sending a calibration command to the Wii Balance Board.  <a href="YAWiiBBessentials_8h.html#ab8232c599a51c7ab97c274d3e77b5f44">More...</a><br /></td></tr>
-<tr class="separator:ab8232c599a51c7ab97c274d3e77b5f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5868e6594d3f3d196617b6213281efda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#a5868e6594d3f3d196617b6213281efda">handle_led_on</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
-<tr class="memdesc:a5868e6594d3f3d196617b6213281efda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes sending an LED on command to the Wii Balance Board.  <a href="YAWiiBBessentials_8h.html#a5868e6594d3f3d196617b6213281efda">More...</a><br /></td></tr>
-<tr class="separator:a5868e6594d3f3d196617b6213281efda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07bfbd5600af37648e85f66c773e3f64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#a07bfbd5600af37648e85f66c773e3f64">handle_activation</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
-<tr class="memdesc:a07bfbd5600af37648e85f66c773e3f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes sending an activation command to the Wii Balance Board.  <a href="YAWiiBBessentials_8h.html#a07bfbd5600af37648e85f66c773e3f64">More...</a><br /></td></tr>
-<tr class="separator:a07bfbd5600af37648e85f66c773e3f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2e0cc68839171efaa32567b1755ec78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#ab2e0cc68839171efaa32567b1755ec78">handle_data_dump</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
-<tr class="memdesc:ab2e0cc68839171efaa32567b1755ec78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes sending a data dump command (continous report of readings) to the Wii Balance Board.  <a href="YAWiiBBessentials_8h.html#ab2e0cc68839171efaa32567b1755ec78">More...</a><br /></td></tr>
-<tr class="separator:ab2e0cc68839171efaa32567b1755ec78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae475fce3cc47a9f2e1fcb1efafbb7aed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__EssentialFunctions.html#gae475fce3cc47a9f2e1fcb1efafbb7aed">find_wii_balance_board</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
+<tr class="memdesc:gae475fce3cc47a9f2e1fcb1efafbb7aed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the Wii Balance Board by scanning nearby Bluetooth devices.  <a href="group__EssentialFunctions.html#gae475fce3cc47a9f2e1fcb1efafbb7aed">More...</a><br /></td></tr>
+<tr class="separator:gae475fce3cc47a9f2e1fcb1efafbb7aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ac7ea94309bcc68a18c1a6559389e54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__EssentialFunctions.html#ga3ac7ea94309bcc68a18c1a6559389e54">send_command</a> (int sock, const unsigned char *command, int length)</td></tr>
+<tr class="memdesc:ga3ac7ea94309bcc68a18c1a6559389e54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a command to the Wii Balance Board over the control socket.  <a href="group__EssentialFunctions.html#ga3ac7ea94309bcc68a18c1a6559389e54">More...</a><br /></td></tr>
+<tr class="separator:ga3ac7ea94309bcc68a18c1a6559389e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac548fb87e985634984dabe7ba4774b09"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__EssentialFunctions.html#gac548fb87e985634984dabe7ba4774b09">connect_l2cap</a> (const char *bdaddr_str, uint16_t psm)</td></tr>
+<tr class="memdesc:gac548fb87e985634984dabe7ba4774b09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establishes a L2CAP connection with the Wii Balance Board.  <a href="group__EssentialFunctions.html#gac548fb87e985634984dabe7ba4774b09">More...</a><br /></td></tr>
+<tr class="separator:gac548fb87e985634984dabe7ba4774b09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad059069d8a9991634ede9effc149edee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CommandHandlers.html#gad059069d8a9991634ede9effc149edee">handle_status</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
+<tr class="memdesc:gad059069d8a9991634ede9effc149edee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes sending a status command to the Wii Balance Board.  <a href="group__CommandHandlers.html#gad059069d8a9991634ede9effc149edee">More...</a><br /></td></tr>
+<tr class="separator:gad059069d8a9991634ede9effc149edee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab8232c599a51c7ab97c274d3e77b5f44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CommandHandlers.html#gab8232c599a51c7ab97c274d3e77b5f44">handle_calibration</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
+<tr class="memdesc:gab8232c599a51c7ab97c274d3e77b5f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes sending a calibration command to the Wii Balance Board.  <a href="group__CommandHandlers.html#gab8232c599a51c7ab97c274d3e77b5f44">More...</a><br /></td></tr>
+<tr class="separator:gab8232c599a51c7ab97c274d3e77b5f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5868e6594d3f3d196617b6213281efda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CommandHandlers.html#ga5868e6594d3f3d196617b6213281efda">handle_led_on</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
+<tr class="memdesc:ga5868e6594d3f3d196617b6213281efda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes sending an LED on command to the Wii Balance Board.  <a href="group__CommandHandlers.html#ga5868e6594d3f3d196617b6213281efda">More...</a><br /></td></tr>
+<tr class="separator:ga5868e6594d3f3d196617b6213281efda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga07bfbd5600af37648e85f66c773e3f64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CommandHandlers.html#ga07bfbd5600af37648e85f66c773e3f64">handle_activation</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
+<tr class="memdesc:ga07bfbd5600af37648e85f66c773e3f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes sending an activation command to the Wii Balance Board.  <a href="group__CommandHandlers.html#ga07bfbd5600af37648e85f66c773e3f64">More...</a><br /></td></tr>
+<tr class="separator:ga07bfbd5600af37648e85f66c773e3f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab2e0cc68839171efaa32567b1755ec78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CommandHandlers.html#gab2e0cc68839171efaa32567b1755ec78">handle_data_dump</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
+<tr class="memdesc:gab2e0cc68839171efaa32567b1755ec78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes sending a data dump command (continous report of readings) to the Wii Balance Board.  <a href="group__CommandHandlers.html#gab2e0cc68839171efaa32567b1755ec78">More...</a><br /></td></tr>
+<tr class="separator:gab2e0cc68839171efaa32567b1755ec78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc21ad3571d867944d2dab3c0d607f34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#acc21ad3571d867944d2dab3c0d607f34">process_received_data</a> (int bytes_read, unsigned char *<a class="el" href="YAWiiBBessentials_8h.html#acab2203504e72e5e674d3174e0bd7d5e">buffer</a>, <a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
 <tr class="memdesc:acc21ad3571d867944d2dab3c0d607f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes received data from the Wii Balance Board.  <a href="YAWiiBBessentials_8h.html#acc21ad3571d867944d2dab3c0d607f34">More...</a><br /></td></tr>
 <tr class="separator:acc21ad3571d867944d2dab3c0d607f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,37 +188,67 @@ Functions</h2></td></tr>
 <tr class="memitem:adcf85a0eb9492992eb2469e5bd3c658a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#adcf85a0eb9492992eb2469e5bd3c658a">is_valid_mac</a> (int argc, char *argv[])</td></tr>
 <tr class="memdesc:adcf85a0eb9492992eb2469e5bd3c658a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates a given MAC address for format and content.  <a href="YAWiiBBessentials_8h.html#adcf85a0eb9492992eb2469e5bd3c658a">More...</a><br /></td></tr>
 <tr class="separator:adcf85a0eb9492992eb2469e5bd3c658a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a70b74d08e64dcfd5a6b1e289e2ef08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#a8a70b74d08e64dcfd5a6b1e289e2ef08">process_calibration_data</a> (int *bytes_read, unsigned char *<a class="el" href="YAWiiBBessentials_8h.html#acab2203504e72e5e674d3174e0bd7d5e">buffer</a>, <a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
-<tr class="memdesc:a8a70b74d08e64dcfd5a6b1e289e2ef08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the calibration data from the Wii Balance Board.  <a href="YAWiiBBessentials_8h.html#a8a70b74d08e64dcfd5a6b1e289e2ef08">More...</a><br /></td></tr>
-<tr class="separator:a8a70b74d08e64dcfd5a6b1e289e2ef08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad302657f1801e9590f4a7f454818b734"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#ad302657f1801e9590f4a7f454818b734">bytes_to_int_big_endian</a> (const unsigned char *<a class="el" href="YAWiiBBessentials_8h.html#acab2203504e72e5e674d3174e0bd7d5e">buffer</a>, size_t position, int *max)</td></tr>
-<tr class="memdesc:ad302657f1801e9590f4a7f454818b734"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts two consecutive bytes in the buffer from Big-Endian representation to a decimal integer.  <a href="YAWiiBBessentials_8h.html#ad302657f1801e9590f4a7f454818b734">More...</a><br /></td></tr>
-<tr class="separator:ad302657f1801e9590f4a7f454818b734"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05333867b38c4e18d7af195b85ac4480"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#a05333867b38c4e18d7af195b85ac4480">calc_mass</a> (const <a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board, uint16_t raw, int pos)</td></tr>
-<tr class="memdesc:a05333867b38c4e18d7af195b85ac4480"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the weight in grams from the raw data of the Wii Balance Board.  <a href="YAWiiBBessentials_8h.html#a05333867b38c4e18d7af195b85ac4480">More...</a><br /></td></tr>
-<tr class="separator:a05333867b38c4e18d7af195b85ac4480"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ca10c6c473e8539e765ed4cce662b01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#a5ca10c6c473e8539e765ed4cce662b01">print_calibration_data</a> (const <a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
-<tr class="memdesc:a5ca10c6c473e8539e765ed4cce662b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the stored calibration data.  <a href="YAWiiBBessentials_8h.html#a5ca10c6c473e8539e765ed4cce662b01">More...</a><br /></td></tr>
-<tr class="separator:a5ca10c6c473e8539e765ed4cce662b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a70b74d08e64dcfd5a6b1e289e2ef08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ExtendedProcessing.html#ga8a70b74d08e64dcfd5a6b1e289e2ef08">process_calibration_data</a> (int *bytes_read, unsigned char *<a class="el" href="YAWiiBBessentials_8h.html#acab2203504e72e5e674d3174e0bd7d5e">buffer</a>, <a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
+<tr class="memdesc:ga8a70b74d08e64dcfd5a6b1e289e2ef08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the calibration data from the Wii Balance Board.  <a href="group__ExtendedProcessing.html#ga8a70b74d08e64dcfd5a6b1e289e2ef08">More...</a><br /></td></tr>
+<tr class="separator:ga8a70b74d08e64dcfd5a6b1e289e2ef08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad302657f1801e9590f4a7f454818b734"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ExtendedProcessing.html#gad302657f1801e9590f4a7f454818b734">bytes_to_int_big_endian</a> (const unsigned char *<a class="el" href="YAWiiBBessentials_8h.html#acab2203504e72e5e674d3174e0bd7d5e">buffer</a>, size_t position, int *max)</td></tr>
+<tr class="memdesc:gad302657f1801e9590f4a7f454818b734"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts two consecutive bytes in the buffer from Big-Endian representation to a decimal integer.  <a href="group__ExtendedProcessing.html#gad302657f1801e9590f4a7f454818b734">More...</a><br /></td></tr>
+<tr class="separator:gad302657f1801e9590f4a7f454818b734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga05333867b38c4e18d7af195b85ac4480"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ExtendedProcessing.html#ga05333867b38c4e18d7af195b85ac4480">calc_mass</a> (const <a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board, uint16_t raw, int pos)</td></tr>
+<tr class="memdesc:ga05333867b38c4e18d7af195b85ac4480"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the weight in grams from the raw data of the Wii Balance Board.  <a href="group__ExtendedProcessing.html#ga05333867b38c4e18d7af195b85ac4480">More...</a><br /></td></tr>
+<tr class="separator:ga05333867b38c4e18d7af195b85ac4480"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5ca10c6c473e8539e765ed4cce662b01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ExtendedProcessing.html#ga5ca10c6c473e8539e765ed4cce662b01">print_calibration_data</a> (const <a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
+<tr class="memdesc:ga5ca10c6c473e8539e765ed4cce662b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the stored calibration data.  <a href="group__ExtendedProcessing.html#ga5ca10c6c473e8539e765ed4cce662b01">More...</a><br /></td></tr>
+<tr class="separator:ga5ca10c6c473e8539e765ed4cce662b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ac66ec18459b1e4901b90504cf3d8bd58"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="YAWiiBBessentials_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#ac66ec18459b1e4901b90504cf3d8bd58">debug_level</a></td></tr>
 <tr class="separator:ac66ec18459b1e4901b90504cf3d8bd58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acab2203504e72e5e674d3174e0bd7d5e"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#acab2203504e72e5e674d3174e0bd7d5e">buffer</a> [<a class="el" href="YAWiiBBessentials_8h.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:acab2203504e72e5e674d3174e0bd7d5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer for storing responses from the Wii Balance Board.  <a href="YAWiiBBessentials_8h.html#acab2203504e72e5e674d3174e0bd7d5e">More...</a><br /></td></tr>
 <tr class="separator:acab2203504e72e5e674d3174e0bd7d5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57079d2070001acbc11e3a1dc3ee255c"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#a57079d2070001acbc11e3a1dc3ee255c">status_command</a> []</td></tr>
-<tr class="separator:a57079d2070001acbc11e3a1dc3ee255c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd076d37be1f030cbfd83fcf7a8cab86"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#afd076d37be1f030cbfd83fcf7a8cab86">activate_command</a> []</td></tr>
-<tr class="separator:afd076d37be1f030cbfd83fcf7a8cab86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad412e3af0e38003eaf4fff9bac90bb86"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#ad412e3af0e38003eaf4fff9bac90bb86">calibration_command</a> []</td></tr>
-<tr class="separator:ad412e3af0e38003eaf4fff9bac90bb86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad889214dc2e72a03ba24c7beb22d3f07"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#ad889214dc2e72a03ba24c7beb22d3f07">led_on_command</a> []</td></tr>
-<tr class="separator:ad889214dc2e72a03ba24c7beb22d3f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0ff0f5bc26f47a860da6ff1c7a1f09d"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBessentials_8h.html#af0ff0f5bc26f47a860da6ff1c7a1f09d">data_dump_command</a> []</td></tr>
-<tr class="separator:af0ff0f5bc26f47a860da6ff1c7a1f09d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga57079d2070001acbc11e3a1dc3ee255c"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CommandDefinitions.html#ga57079d2070001acbc11e3a1dc3ee255c">status_command</a> []</td></tr>
+<tr class="separator:ga57079d2070001acbc11e3a1dc3ee255c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafd076d37be1f030cbfd83fcf7a8cab86"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CommandDefinitions.html#gafd076d37be1f030cbfd83fcf7a8cab86">activate_command</a> []</td></tr>
+<tr class="separator:gafd076d37be1f030cbfd83fcf7a8cab86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad412e3af0e38003eaf4fff9bac90bb86"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CommandDefinitions.html#gad412e3af0e38003eaf4fff9bac90bb86">calibration_command</a> []</td></tr>
+<tr class="separator:gad412e3af0e38003eaf4fff9bac90bb86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad889214dc2e72a03ba24c7beb22d3f07"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CommandDefinitions.html#gad889214dc2e72a03ba24c7beb22d3f07">led_on_command</a> []</td></tr>
+<tr class="separator:gad889214dc2e72a03ba24c7beb22d3f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf0ff0f5bc26f47a860da6ff1c7a1f09d"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CommandDefinitions.html#gaf0ff0f5bc26f47a860da6ff1c7a1f09d">data_dump_command</a> []</td></tr>
+<tr class="separator:gaf0ff0f5bc26f47a860da6ff1c7a1f09d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Header file for core definitions and utility functions used in the YAWiiBB project. </p>
+<p >This header file provides essential definitions, data structures, and function declarations that support core functionality for the YAWiiBB (Yet Another Wii Balance Board Driver) project. It serves as a foundational component, defining the main interfaces and constants required for interacting with a Wii Balance Board over Bluetooth.</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Key Components</h2>
+<ul>
+<li><b>Data Structures</b>: Contains the primary data structures for representing the state and configuration of the Wii Balance Board, including fields for sensor data, calibration parameters, and device status.</li>
+<li><b>Constants and Macros</b>: Defines constants, macros, and flag values used throughout the project to standardize operations, such as status flags and timing parameters.</li>
+<li><b>Utility Functions</b>: Declares utility functions for tasks like initializing the board, processing sensor data, and managing connection status. These functions are designed to be called within the main application loop and support modular expansion.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Essential vs. Extended Functionality</h2>
+<p >Originally, the project aimed to split core (<code>essentials</code>) and extended (<code>extended</code>) functionality across separate files. However, as an intermediate programmer, I encountered challenges in managing memory access violations when handling this separation. After considerable testing, I integrated the extended functionality directly within <code><a class="el" href="YAWiiBBessentials_8h.html" title="Header file for core definitions and utility functions used in the YAWiiBB project.">YAWiiBBessentials.h</a></code>, within an <code>EXTENDED</code> section, for stability and to simplify memory management.</p>
+<p >This integrated approach ensures that both core and additional features operate seamlessly, although it may require restructuring in the future if modularity is prioritized or memory handling becomes more robust.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Dependencies</h2>
+<p >This file depends on the <code>bluez</code> library for Bluetooth communication, which provides the essential functions and structures required to connect and interact with the Wii Balance Board. Ensure the following libraries are available and correctly linked:</p><ul>
+<li><code>bluez</code> (Bluetooth library for Linux, required for L2CAP connections)</li>
+<li>Standard C libraries (e.g., <code>stdlib.h</code>, <code>stdio.h</code>, <code>unistd.h</code>) for basic operations and system-level interactions.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Usage Notes</h2>
+<p >This file should be included in any source files that need direct access to the core functionality of YAWiiBB. By isolating these definitions and functions, <code><a class="el" href="YAWiiBBessentials_8h.html" title="Header file for core definitions and utility functions used in the YAWiiBB project.">YAWiiBBessentials.h</a></code> promotes modularity and ensures that key components of the application can be maintained and extended independently.</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Future Extensions</h2>
+<ul>
+<li><b>Stronger Use of Pointers</b>: Future revisions could aim to reduce variable passing and further rely on pointers to optimize performance and minimize memory allocation issues. Currently, variable passing has been used where pointer implementation led to compilation errors or memory access issues, but transitioning to pointers where possible could simplify the function calls and improve runtime efficiency.</li>
+<li><b>Modular Separation</b>: Revisit the combined structure for <code>essentials</code> and <code>extended</code> functionality, separating them into distinct files once memory handling and stability are manageable, allowing for a clearer modular structure. </li>
+</ul>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a6b20d41d6252e9871430c242cb1a56e7" name="a6b20d41d6252e9871430c242cb1a56e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6b20d41d6252e9871430c242cb1a56e7">&#9670;&nbsp;</a></span>BUFFER_SIZE</h2>
 
@@ -275,143 +308,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ad302657f1801e9590f4a7f454818b734" name="ad302657f1801e9590f4a7f454818b734"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad302657f1801e9590f4a7f454818b734">&#9670;&nbsp;</a></span>bytes_to_int_big_endian()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t bytes_to_int_big_endian </td>
-          <td>(</td>
-          <td class="paramtype">const unsigned char *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>max</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Converts two consecutive bytes in the buffer from Big-Endian representation to a decimal integer. </p>
-<p >Interprets two bytes in the given <code>buffer</code> starting from the provided <code>position</code> as a 16-bit integer in Big-Endian format (most significant byte first). The function returns this integer so that it can be output in decimal form.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">buffer</td><td>Pointer to the buffer that contains the bytes. </td></tr>
-    <tr><td class="paramname">position</td><td>The starting position of the most significant byte in the buffer. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>uint16_t The Big-Endian number interpreted as a decimal integer. </dd></dl>
-
-</div>
-</div>
-<a id="a05333867b38c4e18d7af195b85ac4480" name="a05333867b38c4e18d7af195b85ac4480"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05333867b38c4e18d7af195b85ac4480">&#9670;&nbsp;</a></span>calc_mass()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t calc_mass </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>raw</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pos</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Calculates the weight in grams from the raw data of the Wii Balance Board. </p>
-<p >This function uses calibration data from the Wii Balance Board to calculate a weight in grams based on the given raw data. The weight is interpolated within four calibration ranges or, if the value exceeds the highest calibration range, is linearly extrapolated.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">board</td><td>A constant pointer to the Wii Balance Board structure that contains the calibration data. </td></tr>
-    <tr><td class="paramname">raw</td><td>The raw data value representing the weight, measured from one of the four sensor positions (Top-Right, Bottom-Right, etc.). </td></tr>
-    <tr><td class="paramname">pos</td><td>The position of the sensor (0 to 3) for the calibration data of the raw value. Must be within the range [0, 3].</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The calculated weight in grams as <code>uint16_t</code>.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>The function can interpolate weights up to 34 kg with the given calibration values. For values above this range, the weight is linearly extrapolated.</dd></dl>
-<p>The calculation uses four cases based on the raw data:</p><ul>
-<li>If the raw value is less than the calibration for 0 kg, 0 g is returned.</li>
-<li>If the raw value is between the calibrations for 0 kg and 17 kg, linear interpolation occurs between these points.</li>
-<li>If the raw value is between the calibrations for 17 kg and 34 kg, interpolation occurs within this range.</li>
-<li>If the raw value is greater than or equal to the calibration for 34 kg, linear extrapolation is performed based on the last range. </li>
-</ul>
-
-</div>
-</div>
-<a id="ac548fb87e985634984dabe7ba4774b09" name="ac548fb87e985634984dabe7ba4774b09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac548fb87e985634984dabe7ba4774b09">&#9670;&nbsp;</a></span>connect_l2cap()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int connect_l2cap </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>bdaddr_str</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>psm</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Establishes a L2CAP connection with the Wii Balance Board. </p>
-<p >This function creates an L2CAP Bluetooth socket and connects to the specified service (PSM) on the Wii Balance Board using its MAC address. It returns the socket descriptor or exits on failure.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bdaddr_str</td><td>Constant character string representing the Bluetooth MAC address. </td></tr>
-    <tr><td class="paramname">psm</td><td>Integer specifying the Protocol/Service Multiplexer (PSM) channel. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Socket descriptor on success, exits program on failure. </dd></dl>
-
-</div>
-</div>
 <a id="a5d83dd00e63f0b712581f04ecd9adfd4" name="a5d83dd00e63f0b712581f04ecd9adfd4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d83dd00e63f0b712581f04ecd9adfd4">&#9670;&nbsp;</a></span>createThread()</h2>
 
@@ -444,170 +340,6 @@ Variables</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">board</td><td>Pointer to the <code><a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a></code> object monitored by the threadFunction. </td></tr>
     <tr><td class="paramname">threadId</td><td>Pointer to the <code>pthread_t</code> variable where the ID of the new thread will be stored. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ae475fce3cc47a9f2e1fcb1efafbb7aed" name="ae475fce3cc47a9f2e1fcb1efafbb7aed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae475fce3cc47a9f2e1fcb1efafbb7aed">&#9670;&nbsp;</a></span>find_wii_balance_board()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int find_wii_balance_board </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *&#160;</td>
-          <td class="paramname"><em>board</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Finds the Wii Balance Board by scanning nearby Bluetooth devices. </p>
-<p >Requires the device to be in pairing mode and not jet paired</p>
-<p >This function scans for Bluetooth devices in the area and identifies the Wii Balance Board based on its specific name. If found, the board’s MAC address is stored directly in the <code>board</code> structure.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">board</td><td>Pointer to <a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a> structure where the MAC address is stored. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 on success (board found), -1 if not found. </dd></dl>
-
-</div>
-</div>
-<a id="a07bfbd5600af37648e85f66c773e3f64" name="a07bfbd5600af37648e85f66c773e3f64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07bfbd5600af37648e85f66c773e3f64">&#9670;&nbsp;</a></span>handle_activation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void handle_activation </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *&#160;</td>
-          <td class="paramname"><em>board</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Processes sending an activation command to the Wii Balance Board. </p>
-<p >This function is called when the <code>needActivation</code> flag is set, and sends the corresponding activation command to the board.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">board</td><td>Pointer to the <a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a> structure that holds the current status. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab8232c599a51c7ab97c274d3e77b5f44" name="ab8232c599a51c7ab97c274d3e77b5f44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8232c599a51c7ab97c274d3e77b5f44">&#9670;&nbsp;</a></span>handle_calibration()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void handle_calibration </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *&#160;</td>
-          <td class="paramname"><em>board</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Processes sending a calibration command to the Wii Balance Board. </p>
-<p >This function is called when the <code>needCalibration</code> flag is set, and sends the corresponding calibration command to the board.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">board</td><td>Pointer to the <a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a> structure that holds the current status. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab2e0cc68839171efaa32567b1755ec78" name="ab2e0cc68839171efaa32567b1755ec78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2e0cc68839171efaa32567b1755ec78">&#9670;&nbsp;</a></span>handle_data_dump()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void handle_data_dump </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *&#160;</td>
-          <td class="paramname"><em>board</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Processes sending a data dump command (continous report of readings) to the Wii Balance Board. </p>
-<p >This function is called when the <code>needDumpStart</code> flag is set, and starts the continuous transmission of board data.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">board</td><td>Pointer to the <a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a> structure that holds the current status. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a5868e6594d3f3d196617b6213281efda" name="a5868e6594d3f3d196617b6213281efda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5868e6594d3f3d196617b6213281efda">&#9670;&nbsp;</a></span>handle_led_on()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void handle_led_on </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *&#160;</td>
-          <td class="paramname"><em>board</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Processes sending an LED on command to the Wii Balance Board. </p>
-<p >This function is called when the LED flag <code>led</code> is not set, and turns on the board's LED.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">board</td><td>Pointer to the <a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a> structure that holds the current status. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ad059069d8a9991634ede9effc149edee" name="ad059069d8a9991634ede9effc149edee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad059069d8a9991634ede9effc149edee">&#9670;&nbsp;</a></span>handle_status()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void handle_status </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *&#160;</td>
-          <td class="paramname"><em>board</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Processes sending a status command to the Wii Balance Board. </p>
-<p >This function is called when the <code>needStatus</code> flag is set, and sends the corresponding status command to the board.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">board</td><td>Pointer to the <a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a> structure that holds the current status. </td></tr>
   </table>
   </dd>
 </dl>
@@ -651,27 +383,6 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>1</code> if the MAC address is valid; otherwise, <code>0</code>. </dd></dl>
-
-</div>
-</div>
-<a id="a5ca10c6c473e8539e765ed4cce662b01" name="a5ca10c6c473e8539e765ed4cce662b01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ca10c6c473e8539e765ed4cce662b01">&#9670;&nbsp;</a></span>print_calibration_data()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void print_calibration_data </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *&#160;</td>
-          <td class="paramname"><em>board</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Displays the stored calibration data. </p>
-<p >This function is solely for debugging purposes and is no longer used. If one wants to know whether the calibration data has been stored, they can implement it. </p>
 
 </div>
 </div>
@@ -719,91 +430,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Logs messages with different verbosity levels. </p>
-<p >This function displays messages to the console with an optional buffer, allowing selection of verbosity levels: RAW, DEBUG, or VERBOSE.</p>
+<p>Logs messages with different verbosity levels, providing diagnostics and raw data output. </p>
+<p >This function outputs messages to the console with optional raw data from the Wii Balance Board. It supports multiple verbosity levels (RAW, DEBUG, and VERBOSE), controlled by the <code>LogLevel</code> enum. The function is essential for debugging and tracking the board's status and output during development.</p>
+<p >This function's implementation interacts closely with the Wiimote protocol, pushing the limits of my current understanding of the protocol. Despite attempts to isolate functionality in <code>essentials</code>, it remains a complex function with room for refinement.</p>
+<p >Potential areas for improvement include:</p><ul>
+<li><b>Consistent use of pointers</b>: Aiming to rely on pointers wherever possible to reduce stack usage and optimize memory management.</li>
+<li><b>Modularizing verbosity level handling</b>: Simplifying logic for handling different verbosity levels, potentially through helper functions to make the code more manageable.</li>
+</ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">level</td><td>LogLevel enum indicating the verbosity level. </td></tr>
-    <tr><td class="paramname">message</td><td>Constant character string message to be logged. </td></tr>
-    <tr><td class="paramname">buffer</td><td>Optional byte array to display raw data if provided. </td></tr>
+    <tr><td class="paramname">level</td><td>Pointer to a <code>LogLevel</code> enum indicating the verbosity level (RAW, DEBUG, VERBOSE). </td></tr>
+    <tr><td class="paramname">message</td><td>Constant character string representing the message to be logged. </td></tr>
+    <tr><td class="paramname">buffer</td><td>Optional byte array containing raw data to display if needed. This parameter is processed only when provided (not NULL). </td></tr>
     <tr><td class="paramname">length</td><td>Length of the byte array (ignored if buffer is NULL). </td></tr>
+    <tr><td class="paramname">board</td><td>Pointer to the <code><a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a></code> structure for accessing board-specific data. </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a8a70b74d08e64dcfd5a6b1e289e2ef08" name="a8a70b74d08e64dcfd5a6b1e289e2ef08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a70b74d08e64dcfd5a6b1e289e2ef08">&#9670;&nbsp;</a></span>process_calibration_data()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void process_calibration_data </td>
-          <td>(</td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>bytes_read</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned char *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *&#160;</td>
-          <td class="paramname"><em>board</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Processes the calibration data from the Wii Balance Board. </p>
-<p >This function analyzes a data buffer with calibration information and extracts this into the calibration array of the passed <code><a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a></code> instance. The calibration data are 16-bit values stored in a big-endian format and consist of 4 pairs for each of the four corners (topright, topleft, bottomright, bottomleft).</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bytes_read</td><td>Number of bytes actually read in the buffer. </td></tr>
-    <tr><td class="paramname">buffer</td><td>Pointer to a buffer containing the received bytes. The expected structure is:<ul>
-<li>Bytes 7-14: Calibration set 0 (4 pairs, 8 bytes)</li>
-<li>Bytes 15-22: Calibration set 1 (4 pairs, 8 bytes)</li>
-<li>If Byte 15 == 0x00:<ul>
-<li>Bytes 7-14: Calibration set 1</li>
-<li>Bytes 15-22: Calibration set 2 </li>
-</ul>
-</li>
-</ul>
-</td></tr>
-    <tr><td class="paramname">board</td><td>Pointer to the <code><a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a></code> instance where calibration data will be stored.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>This function assumes that the <code>buffer</code> contains at least 23 bytes in order to process the expected calibration data.</dd></dl>
-<p>The operation of the function is as follows:</p><ol type="1">
-<li>Check if the second calibration packet has been received (Byte 15 == 0x00).</li>
-<li>If the second packet is not present:<ul>
-<li>Bytes 7-14 are stored in <code>calibration[0]</code> (Calibration set 0).</li>
-<li>Bytes 15-22 are stored in <code>calibration[1]</code> (Calibration set 1).</li>
-</ul>
-</li>
-<li>If the second packet is present:<ul>
-<li>Bytes 7-14 are stored in <code>calibration[2]</code> (Calibration set 2).</li>
-</ul>
-</li>
-</ol>
-<p >Example:</p><ul>
-<li>Received data as an example:<ul>
-<li>buffer[7] = 0x01, buffer[8] = 0x02 (Calibration 0, Pair 0) In this case, the function would store the values in <code>board-&gt;calibration[0][0]</code></li>
-<li>buffer[15] = 0x00 (indicates that this is packet 2) In this case, the function would only read bytes 7-8,[..],13-14 and store them in <code>board-&gt;calibration[2][i]</code> </li>
-</ul>
-</li>
-</ul>
 
 </div>
 </div>
@@ -852,51 +495,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a3ac7ea94309bcc68a18c1a6559389e54" name="a3ac7ea94309bcc68a18c1a6559389e54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ac7ea94309bcc68a18c1a6559389e54">&#9670;&nbsp;</a></span>send_command()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void send_command </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>sock</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const unsigned char *&#160;</td>
-          <td class="paramname"><em>command</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sends a command to the Wii Balance Board over the control socket. </p>
-<p >This function transmits a command to the board using the specified socket. If an error occurs, the program will exit with a failure status.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sock</td><td>Integer control socket descriptor. </td></tr>
-    <tr><td class="paramname">command</td><td>Byte array of command data to be sent. </td></tr>
-    <tr><td class="paramname">length</td><td>Integer representing the length of the command array. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ad8f02da697aa751e5afa01d088b9cacd" name="ad8f02da697aa751e5afa01d088b9cacd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad8f02da697aa751e5afa01d088b9cacd">&#9670;&nbsp;</a></span>threadFunction()</h2>
 
@@ -926,28 +524,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="afd076d37be1f030cbfd83fcf7a8cab86" name="afd076d37be1f030cbfd83fcf7a8cab86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd076d37be1f030cbfd83fcf7a8cab86">&#9670;&nbsp;</a></span>activate_command</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const unsigned char activate_command[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="acab2203504e72e5e674d3174e0bd7d5e" name="acab2203504e72e5e674d3174e0bd7d5e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acab2203504e72e5e674d3174e0bd7d5e">&#9670;&nbsp;</a></span>buffer</h2>
 
@@ -968,49 +544,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="ad412e3af0e38003eaf4fff9bac90bb86" name="ad412e3af0e38003eaf4fff9bac90bb86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad412e3af0e38003eaf4fff9bac90bb86">&#9670;&nbsp;</a></span>calibration_command</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const unsigned char calibration_command[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af0ff0f5bc26f47a860da6ff1c7a1f09d" name="af0ff0f5bc26f47a860da6ff1c7a1f09d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0ff0f5bc26f47a860da6ff1c7a1f09d">&#9670;&nbsp;</a></span>data_dump_command</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const unsigned char data_dump_command[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Buffer for storing responses from the Wii Balance Board. </p>
+<p >This buffer holds incoming data from the Balance Board, with a fixed maximum length of 24 bytes, as responses do not exceed this length. </p>
 
 </div>
 </div>
@@ -1025,50 +560,6 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">const <a class="el" href="YAWiiBBessentials_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a> debug_level</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad889214dc2e72a03ba24c7beb22d3f07" name="ad889214dc2e72a03ba24c7beb22d3f07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad889214dc2e72a03ba24c7beb22d3f07">&#9670;&nbsp;</a></span>led_on_command</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const unsigned char led_on_command[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a57079d2070001acbc11e3a1dc3ee255c" name="a57079d2070001acbc11e3a1dc3ee255c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57079d2070001acbc11e3a1dc3ee255c">&#9670;&nbsp;</a></span>status_command</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const unsigned char status_command[]</td>
         </tr>
       </table>
   </td>

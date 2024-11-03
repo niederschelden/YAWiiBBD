@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['led_0',['led',['../structWiiBalanceBoard.html#abbd14b40f2304ae098ae475d545c3417',1,'WiiBalanceBoard']]],
-  ['led_5fon_5fcommand_1',['led_on_command',['../YAWiiBBessentials_8c.html#ad889214dc2e72a03ba24c7beb22d3f07',1,'led_on_command():&#160;YAWiiBBessentials.c'],['../YAWiiBBessentials_8h.html#ad889214dc2e72a03ba24c7beb22d3f07',1,'led_on_command():&#160;YAWiiBBessentials.c']]],
-  ['loglevel_2',['LogLevel',['../YAWiiBBessentials_8h.html#aca1fd1d8935433e6ba2e3918214e07f9',1,'YAWiiBBessentials.h']]]
+  ['is_5frunning_0',['is_running',['../structWiiBalanceBoard.html#a4a174d3c4beb7610fba9886ba2b0cc35',1,'WiiBalanceBoard']]],
+  ['is_5fvalid_5fmac_1',['is_valid_mac',['../YAWiiBBessentials_8c.html#adcf85a0eb9492992eb2469e5bd3c658a',1,'is_valid_mac(int argc, char *argv[]):&#160;YAWiiBBessentials.c'],['../YAWiiBBessentials_8h.html#adcf85a0eb9492992eb2469e5bd3c658a',1,'is_valid_mac(int argc, char *argv[]):&#160;YAWiiBBessentials.c']]]
 ];

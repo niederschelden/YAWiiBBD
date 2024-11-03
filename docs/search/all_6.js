@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['is_5frunning_0',['is_running',['../structWiiBalanceBoard.html#a4a174d3c4beb7610fba9886ba2b0cc35',1,'WiiBalanceBoard']]],
-  ['is_5fvalid_5fmac_1',['is_valid_mac',['../YAWiiBBessentials_8c.html#adcf85a0eb9492992eb2469e5bd3c658a',1,'is_valid_mac(int argc, char *argv[]):&#160;YAWiiBBessentials.c'],['../YAWiiBBessentials_8h.html#adcf85a0eb9492992eb2469e5bd3c658a',1,'is_valid_mac(int argc, char *argv[]):&#160;YAWiiBBessentials.c']]]
+  ['handle_5factivation_0',['handle_activation',['../group__CommandHandlers.html#ga07bfbd5600af37648e85f66c773e3f64',1,'handle_activation(WiiBalanceBoard *board):&#160;YAWiiBBessentials.c'],['../group__CommandHandlers.html#ga07bfbd5600af37648e85f66c773e3f64',1,'handle_activation(WiiBalanceBoard *board):&#160;YAWiiBBessentials.c']]],
+  ['handle_5fcalibration_1',['handle_calibration',['../group__CommandHandlers.html#gab8232c599a51c7ab97c274d3e77b5f44',1,'handle_calibration(WiiBalanceBoard *board):&#160;YAWiiBBessentials.c'],['../group__CommandHandlers.html#gab8232c599a51c7ab97c274d3e77b5f44',1,'handle_calibration(WiiBalanceBoard *board):&#160;YAWiiBBessentials.c']]],
+  ['handle_5fdata_5fdump_2',['handle_data_dump',['../group__CommandHandlers.html#gab2e0cc68839171efaa32567b1755ec78',1,'handle_data_dump(WiiBalanceBoard *board):&#160;YAWiiBBessentials.c'],['../group__CommandHandlers.html#gab2e0cc68839171efaa32567b1755ec78',1,'handle_data_dump(WiiBalanceBoard *board):&#160;YAWiiBBessentials.c']]],
+  ['handle_5fled_5fon_3',['handle_led_on',['../group__CommandHandlers.html#ga5868e6594d3f3d196617b6213281efda',1,'handle_led_on(WiiBalanceBoard *board):&#160;YAWiiBBessentials.c'],['../group__CommandHandlers.html#ga5868e6594d3f3d196617b6213281efda',1,'handle_led_on(WiiBalanceBoard *board):&#160;YAWiiBBessentials.c']]],
+  ['handle_5fstatus_4',['handle_status',['../group__CommandHandlers.html#gad059069d8a9991634ede9effc149edee',1,'handle_status(WiiBalanceBoard *board):&#160;YAWiiBBessentials.c'],['../group__CommandHandlers.html#gad059069d8a9991634ede9effc149edee',1,'handle_status(WiiBalanceBoard *board):&#160;YAWiiBBessentials.c']]]
 ];

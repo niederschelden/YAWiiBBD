@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Hauptdatei für die YAWiiBB-Anwendung, die die Interaktion mit einem Wii Balance Board ermöglicht.  
+<p>Core file for the YAWiiBB application, facilitating interaction with a Wii Balance Board.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="YAWiiBBessentials_8h_source.html">YAWiiBBessentials.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -82,8 +82,8 @@ Include dependency graph for YAWiiBBD.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="YAWiiBBD_8c__incl.png" border="0" usemap="#asrc_2YAWiiBBD_8c" alt=""/></div>
 <map name="asrc_2YAWiiBBD_8c" id="asrc_2YAWiiBBD_8c">
-<area shape="rect" title="Hauptdatei für die YAWiiBB&#45;Anwendung, die die Interaktion mit einem Wii Balance Board ermöglicht." alt="" coords="564,5,684,32"/>
-<area shape="rect" href="YAWiiBBessentials_8h.html" title=" " alt="" coords="547,80,701,107"/>
+<area shape="rect" title="Core file for the YAWiiBB application, facilitating interaction with a Wii Balance Board." alt="" coords="564,5,684,32"/>
+<area shape="rect" href="YAWiiBBessentials_8h.html" title="Header file for core definitions and utility functions used in the YAWiiBB project." alt="" coords="547,80,701,107"/>
 <area shape="rect" title=" " alt="" coords="5,155,72,181"/>
 <area shape="rect" title=" " alt="" coords="97,155,167,181"/>
 <area shape="rect" title=" " alt="" coords="192,155,267,181"/>
@@ -102,10 +102,10 @@ Include dependency graph for YAWiiBBD.c:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a79bd1ed34e531054af36f802d1163e21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBD_8c.html#a79bd1ed34e531054af36f802d1163e21">main_loop</a> (<a class="el" href="structWiiBalanceBoard.html">WiiBalanceBoard</a> *board)</td></tr>
-<tr class="memdesc:a79bd1ed34e531054af36f802d1163e21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hauptschleife der Anwendung.  <a href="YAWiiBBD_8c.html#a79bd1ed34e531054af36f802d1163e21">More...</a><br /></td></tr>
+<tr class="memdesc:a79bd1ed34e531054af36f802d1163e21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main loop of the application.  <a href="YAWiiBBD_8c.html#a79bd1ed34e531054af36f802d1163e21">More...</a><br /></td></tr>
 <tr class="separator:a79bd1ed34e531054af36f802d1163e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBD_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
-<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Haupteinstiegspunkt der Anwendung.  <a href="YAWiiBBD_8c.html#a0ddf1224851353fc92bfbff6f499fa97">More...</a><br /></td></tr>
+<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main entry point of the application.  <a href="YAWiiBBD_8c.html#a0ddf1224851353fc92bfbff6f499fa97">More...</a><br /></td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -114,16 +114,21 @@ Variables</h2></td></tr>
 <tr class="separator:ac66ec18459b1e4901b90504cf3d8bd58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Hauptdatei für die YAWiiBB-Anwendung, die die Interaktion mit einem Wii Balance Board ermöglicht. </p>
-<p >Diese Datei enthält die Hauptfunktionalität der Anwendung, einschließlich der Initialisierung der Verbindungen, der Hauptschleife zur Verarbeitung von Befehlen und der Verwaltung von Threads. Abhängig von den Kompilierungsflags kann die Debug-Stufe variieren, was die Protokollierung und den Status der Anwendung beeinflusst.</p>
-<p >Es wird eine Verbindung zum Wii Balance Board über Bluetooth hergestellt, und die Anwendung verarbeitet Daten in einer Schleife, solange das Board aktiv ist.</p>
-<dl class="section note"><dt>Note</dt><dd>Um die Anwendung zu kompilieren, verwenden Sie die folgenden Befehle:<ul>
-<li>Für die Standardversion: <div class="fragment"><div class="line">gcc -Wall -o simple YAWiiBBD.c -lbluetooth</div>
+<div class="textblock"><p >Core file for the YAWiiBB application, facilitating interaction with a Wii Balance Board. </p>
+<p >This file contains the main functionality of the application, including setup for Bluetooth connections, the primary loop for data handling, and thread management. The compilation flags control debug levels, which influence logging and application status reporting.</p>
+<p >The application scans for the Wii Balance Board and attempts to establish two L2CAP connections: one for command transmission and one for receiving responses. Once connected, it enters a loop to process and output data continuously as long as the board remains active.</p>
+<h3><a class="anchor" id="autotoc_md1"></a>
+Termination</h3>
+<p >The main loop can be exited by pressing Enter in the terminal or by pressing the power button on the Wii Balance Board.</p>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Compilation Instructions</h2>
+<p >Compile the application using the following commands based on the intended configuration:</p><ul>
+<li><b>Standard Version</b>: Basic setup for data streaming. <div class="fragment"><div class="line">gcc -Wall -o simple YAWiiBBD.c -lbluetooth</div>
 </div><!-- fragment --></li>
-<li>Für die erweiterte Version: <div class="fragment"><div class="line">gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth</div>
-</div><!-- fragment --> </li>
+<li><b>Extended Version</b>: Includes additional features and functions found in <code><a class="el" href="YAWiiBBessentials_8c.html">YAWiiBBessentials.c</a></code>. <div class="fragment"><div class="line">gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth</div>
+</div><!-- fragment --></li>
 </ul>
-</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Ensure all required Bluetooth dependencies are installed and configured to allow successful connection and data handling from the Wii Balance Board. </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&nbsp;</a></span>main()</h2>
@@ -151,16 +156,19 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Haupteinstiegspunkt der Anwendung. </p>
-<p >Diese Funktion initialisiert das <code><a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a></code>, überprüft die Gültigkeit der übergebenen MAC-Adresse und stellt eine Bluetooth- Verbindung zum Balance Board her. Ein Hintergrundthread wird gestartet, der für die Benutzereingabe zuständig ist. Die Hauptschleife wird ausgeführt, solange das <code>is_running</code>-Flag auf <code>true</code> gesetzt ist. Am Ende werden alle Ressourcen aufgeräumt und die Verbindung zum Balance Board geschlossen.</p>
+<p>Main entry point of the application. </p>
+<p >This function initializes the <code><a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a></code>, checks the validity of the provided MAC address, and establishes a Bluetooth connection to the Balance Board. If a valid MAC address is detected, a message is displayed to the user, suggesting a command line format for establishing an immediate connection on subsequent runs:</p>
+<div class="fragment"><div class="line">printf(<span class="stringliteral">&quot;YOU MAY USE \&quot;%s %s\&quot; FOR IMMEDIATE CONNECTION\n&quot;</span>, argv[0], board.mac);</div>
+</div><!-- fragment --><p >A background thread is started to handle user input. Currently, this thread only supports program termination commands, allowing the user to end the main loop. However, in future versions, this thread could be expanded to accept additional commands, such as status requests or calibration triggers, by setting corresponding flags in the <code><a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a></code> object.</p>
+<p >The main loop operates as long as the <code>is_running</code> flag remains set to <code>true</code>. Upon termination, the function performs cleanup by releasing all resources and closing the Bluetooth connection to the Balance Board.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">argc</td><td>Anzahl der übergebenen Argumente beim Programmstart. </td></tr>
-    <tr><td class="paramname">argv</td><td>Array von Zeichenfolgen mit den übergebenen Argumenten. </td></tr>
+    <tr><td class="paramname">argc</td><td>Number of arguments passed to the program at startup. </td></tr>
+    <tr><td class="paramname">argv</td><td>Array of strings containing the arguments passed. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>0, wenn das Programm erfolgreich abgeschlossen wurde. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if the program completes successfully. </dd></dl>
 
 </div>
 </div>
@@ -180,11 +188,12 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Hauptschleife der Anwendung. </p>
-<p >Diese Funktion führt die Kernoperationen der Anwendung aus, indem sie verschiedene Aktionen basierend auf den Flags im <code><a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a></code>-Objekt ausführt. Dazu gehören Statusabfragen, Kalibrierung, Aktivierung und das Ein-/Ausschalten der LED. Die empfangenen Daten werden verarbeitet, und die Schleife pausiert für 10 Millisekunden, um die CPU-Belastung zu minimieren.</p>
+<p>Main loop of the application. </p>
+<p >This function executes the core operations of the application, performing various actions based on the flags set within the <code><a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a></code> object. These actions include status checks, calibration, activation, and toggling the LED on or off. The received data from the Balance Board is processed and handled within this loop.</p>
+<p >The loop includes a 10-millisecond delay to reduce CPU load and ensure efficient processing of data. It runs continuously until a termination signal is received.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>Ein Zeiger auf das <code><a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a></code>-Objekt, das die aktuellen Statusinformationen und Flags enthält. </td></tr>
+    <tr><td class="paramname">board</td><td>A pointer to the <code><a class="el" href="structWiiBalanceBoard.html" title="Represents the Wii Balance Board connection and status.">WiiBalanceBoard</a></code> object containing current status information and control flags. </td></tr>
   </table>
   </dd>
 </dl>
