@@ -1,8 +1,8 @@
 #include "YAWiiBBessentials.h"
 /**
- * @mainpage YAWiiBB Project Documentation
+ * @mainpage YAWiiBBD Project Documentation
  * 
- * Welcome to the documentation for the YAWiiBB (Yet Another Wii Balance Board Driver) project. 
+ * Welcome to the documentation for the YAWiiBBD (Yet Another Wii Balance Board Driver) project. 
  * This project was born out of necessity: as a physical therapist, I rely on simple and precise measurements of the body’s center of gravity to support assessments and therapy tracking. However, I cannot justify the five-figure costs for medical products that exceed my requirements and stretch my budget. With the Wii system gradually disappearing from the second-hand market and the Balance Board available for as little as 5-10 € on eBay, this project offers a practical solution for capturing data at a fraction of the cost.
  * 
  * Initially, I explored larger projects like Wiimote and CWii, but they quickly overwhelmed me as an intermediate programmer. Other projects, especially those in Python, also proved challenging due to limited development progress, which prevented me from tailoring them to my needs. Thus, the YAWiiBB project was created.
@@ -39,17 +39,27 @@
  * Compile the application using the following commands based on the intended configuration:
  * - **Standard Version**: Basic setup for data streaming.
  *   @code
- *   gcc -Wall -o simple YAWiiBBD.c -lbluetooth
+ *   gcc -Wall -o YAWiiBBD YAWiiBBD.c -lbluetooth
  *   @endcode
  * - **Extended Version**: Includes additional features and functions found in `YAWiiBBessentials.c`.
  *   @code
- *   gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
+ *   gcc -DYAWIIBB_EXTENDED -Wall -o YAwiiBBD YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
  *   @endcode
  * 
  * @note Ensure all required Bluetooth dependencies are installed and configured 
  * to allow successful connection and data handling from the Wii Balance Board.
  */
 
+
+/**
+ * @brief Default logging level for output verbosity, dependent on compilation mode.
+ *
+ * The `debug_level` constant controls the verbosity of output logging for the Wii Balance Board.
+ * - When compiled without the `YAWIIBB_EXTENDED` flag, the logging level is set to the only available option`RAW`, 
+ *   limiting output to raw, uninterpreted data.
+ * - When compiled with the `YAWIIBB_EXTENDED` flag, the logging level defaults to `DEBUG`, 
+ *   allowing the selection between multiple verbosity levels (`RAW`, `DECODE`, `DEBUG`, and optionally `VERBOSE`).
+ */
 #ifdef YAWIIBB_EXTENDED
 const LogLevel debug_level = DEBUG; //Options RAW, DECODE, DEBUG, (VERBOSE)
 #else

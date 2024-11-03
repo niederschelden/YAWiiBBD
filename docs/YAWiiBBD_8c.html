@@ -111,6 +111,7 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ac66ec18459b1e4901b90504cf3d8bd58"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="YAWiiBBessentials_8h.html#aca1fd1d8935433e6ba2e3918214e07f9">LogLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="YAWiiBBD_8c.html#ac66ec18459b1e4901b90504cf3d8bd58">debug_level</a> = <a class="el" href="YAWiiBBessentials_8h.html#aca1fd1d8935433e6ba2e3918214e07f9a0593585da9181e972974c1274d8f2b4f">DEBUG</a></td></tr>
+<tr class="memdesc:ac66ec18459b1e4901b90504cf3d8bd58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default logging level for output verbosity, dependent on compilation mode.  <a href="YAWiiBBD_8c.html#ac66ec18459b1e4901b90504cf3d8bd58">More...</a><br /></td></tr>
 <tr class="separator:ac66ec18459b1e4901b90504cf3d8bd58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -123,9 +124,9 @@ Termination</h3>
 <h2><a class="anchor" id="autotoc_md2"></a>
 Compilation Instructions</h2>
 <p >Compile the application using the following commands based on the intended configuration:</p><ul>
-<li><b>Standard Version</b>: Basic setup for data streaming. <div class="fragment"><div class="line">gcc -Wall -o simple YAWiiBBD.c -lbluetooth</div>
+<li><b>Standard Version</b>: Basic setup for data streaming. <div class="fragment"><div class="line">gcc -Wall -o YAWiiBBD YAWiiBBD.c -lbluetooth</div>
 </div><!-- fragment --></li>
-<li><b>Extended Version</b>: Includes additional features and functions found in <code><a class="el" href="YAWiiBBessentials_8c.html" title="Core file for funktions predifined in YAWiiBBessentials.h.">YAWiiBBessentials.c</a></code>. <div class="fragment"><div class="line">gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth</div>
+<li><b>Extended Version</b>: Includes additional features and functions found in <code><a class="el" href="YAWiiBBessentials_8c.html" title="Core file for funktions predifined in YAWiiBBessentials.h.">YAWiiBBessentials.c</a></code>. <div class="fragment"><div class="line">gcc -DYAWIIBB_EXTENDED -Wall -o YAwiiBBD YAWiiBBD.c YAWiiBBessentials.c -lbluetooth</div>
 </div><!-- fragment --></li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>Ensure all required Bluetooth dependencies are installed and configured to allow successful connection and data handling from the Wii Balance Board. </dd></dl>
@@ -212,6 +213,12 @@ Compilation Instructions</h2>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Default logging level for output verbosity, dependent on compilation mode. </p>
+<p >The <code>debug_level</code> constant controls the verbosity of output logging for the Wii Balance Board.</p><ul>
+<li>When compiled without the <code>YAWIIBB_EXTENDED</code> flag, the logging level is set to the only available option<code>RAW</code>, limiting output to raw, uninterpreted data.</li>
+<li>When compiled with the <code>YAWIIBB_EXTENDED</code> flag, the logging level defaults to <code>DEBUG</code>, allowing the selection between multiple verbosity levels (<code>RAW</code>, <code>DECODE</code>, <code>DEBUG</code>, and optionally <code>VERBOSE</code>). </li>
+</ul>
 
 </div>
 </div>

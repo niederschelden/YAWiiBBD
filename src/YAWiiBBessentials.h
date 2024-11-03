@@ -73,7 +73,7 @@
 #include <ctype.h>
 
 #define WII_BALANCE_BOARD_ADDR "00:23:CC:43:DC:C2"  /**< Default MAC address for the Wii Balance Board */
-#define BUFFER_SIZE 24  /**< Buffer size for data reception */
+#define BUFFER_SIZE 24  /**< Buffer size for data reception  - for the Wii Balance Board 24 byte is enough*/
 
 /** 
  * @enum LogLevel
@@ -97,7 +97,7 @@ extern const LogLevel debug_level;
  * @brief Buffer for storing responses from the Wii Balance Board.
  *
  * This buffer holds incoming data from the Balance Board, with a fixed maximum 
- * length of 24 bytes, as responses do not exceed this length.
+ * length of bytes, as defined in BUFFER_SIZE
  */
 extern unsigned char buffer[BUFFER_SIZE];
 
