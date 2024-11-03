@@ -68,7 +68,7 @@ int main() {
     printf("Listening to raw data from %s...\n", device_path);
 
     // Beispiel zum Senden eines Kommandos an die Wiimote (4-Byte-Befehl)
-    unsigned char command[4] = {0x52, 0x12, 0x00, 0x10};  // LED an
+    unsigned char command[4] = {0x52, 0x12, 0x00, 0x32};  // Status
     if (write(fd, command, sizeof(command)) < 0) {
         perror("Failed to send command");
     } else {
@@ -77,7 +77,7 @@ int main() {
 
     // Hauptschleife zur Rohdatenerfassung
     int i = 0;
-    while (i++ < 1000) {
+    while (i++ < 5) {
         // Lesen der Eingabedaten vom HID-Gerät
         bytes = read(fd, buf, sizeof(buf));
         if (bytes > 0) {
