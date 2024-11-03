@@ -1,7 +1,62 @@
 #ifndef YAWIIBBESSENTIALS_H
 #define YAWIIBBESSENTIALS_H
-
 //#define YAWIIBB_EXTENDED
+
+
+/**
+ * @file YAWiiBBessentials.h
+ * @brief Header file for core definitions and utility functions used in the YAWiiBB project.
+ *
+ * This header file provides essential definitions, data structures, and function declarations 
+ * that support core functionality for the YAWiiBB (Yet Another Wii Balance Board Driver) project. 
+ * It serves as a foundational component, defining the main interfaces and constants required 
+ * for interacting with a Wii Balance Board over Bluetooth.
+ *
+ * ## Key Components
+ * - **Data Structures**: Contains the primary data structures for representing the state and 
+ *   configuration of the Wii Balance Board, including fields for sensor data, calibration 
+ *   parameters, and device status.
+ * - **Constants and Macros**: Defines constants, macros, and flag values used throughout the 
+ *   project to standardize operations, such as status flags and timing parameters.
+ * - **Utility Functions**: Declares utility functions for tasks like initializing the board, 
+ *   processing sensor data, and managing connection status. These functions are designed 
+ *   to be called within the main application loop and support modular expansion.
+ *
+ * ## Essential vs. Extended Functionality
+ * Originally, the project aimed to split core (`essentials`) and extended (`extended`) 
+ * functionality across separate files. However, as an intermediate programmer, I encountered 
+ * challenges in managing memory access violations when handling this separation. After 
+ * considerable testing, I integrated the extended functionality directly within `YAWiiBBessentials.h`, 
+ * within an `EXTENDED` section, for stability and to simplify memory management.
+ *
+ * This integrated approach ensures that both core and additional features operate seamlessly, 
+ * although it may require restructuring in the future if modularity is prioritized or 
+ * memory handling becomes more robust.
+ *
+ * ## Dependencies
+ * This file depends on the `bluez` library for Bluetooth communication, which provides 
+ * the essential functions and structures required to connect and interact with the Wii 
+ * Balance Board. Ensure the following libraries are available and correctly linked:
+ * - `bluez` (Bluetooth library for Linux, required for L2CAP connections)
+ * - Standard C libraries (e.g., `stdlib.h`, `stdio.h`, `unistd.h`) for basic operations and 
+ *   system-level interactions.
+ * 
+ * ## Usage Notes
+ * This file should be included in any source files that need direct access to the core 
+ * functionality of YAWiiBB. By isolating these definitions and functions, 
+ * `YAWiiBBessentials.h` promotes modularity and ensures that key components of the application 
+ * can be maintained and extended independently.
+ *
+ * ## Future Extensions
+ * - **Stronger Use of Pointers**: Future revisions could aim to reduce variable passing and 
+ *   further rely on pointers to optimize performance and minimize memory allocation issues. 
+ *   Currently, variable passing has been used where pointer implementation led to compilation 
+ *   errors or memory access issues, but transitioning to pointers where possible could 
+ *   simplify the function calls and improve runtime efficiency.
+ * - **Modular Separation**: Revisit the combined structure for `essentials` and `extended` 
+ *   functionality, separating them into distinct files once memory handling and stability 
+ *   are manageable, allowing for a clearer modular structure.
+ */
 
 
 #include <stdio.h>
@@ -37,15 +92,74 @@ typedef enum {
 } LogLevel;
 
 extern const LogLevel debug_level;
+
+/**
+ * @brief Buffer for storing responses from the Wii Balance Board.
+ *
+ * This buffer holds incoming data from the Balance Board, with a fixed maximum 
+ * length of 24 bytes, as responses do not exceed this length.
+ */
 extern unsigned char buffer[BUFFER_SIZE];
 
-/* Externe Deklarationen der Befehls-Arrays */
+/**
+ * @defgroup CommandDefinitions Command Definitions
+ * @brief Command arrays for interacting with the Wii Balance Board based on the Wiimote protocol.
+ *
+ * This section contains predefined command arrays that follow the Wiimote protocol structure, 
+ * as outlined in Wiibrew documentation. Each command array begins with the byte `0x52`, which 
+ * addresses the Wii Balance Board, followed by specific instructions to execute various functions 
+ * (e.g., status request, activation, LED control, calibration, and continuous data reporting).
+ *
+ * ## Command Structure
+ * Each command array uses a consistent structure:
+ * - `0x52` as the first byte to address the Wii Balance Board.
+ * - A second byte that specifies the command function (e.g., `0x12` for status request).
+ * - Additional bytes as required by each function, providing parameters or configuration settings.
+ * 
+ * ## Command Arrays
+ * - **Status Request** (`status_command`): Retrieves the current status of the Balance Board, such 
+ *   as connection state and battery level.
+ *   - `const unsigned char status_command[] = { 0x52, 0x12, 0x00, 0x32 };`
+ *   - Structure: `0x52` (address) | `0x12` (status command) | `0x00` (reserved) | `0x32` (end byte).
+ *   - **Note**: The `0x32` byte at the end may act as a terminator, checksum byte, or something else I do not fully understand.
+
+ * - **Activation Command** (`activate_command`): Activates the Balance Board sensors, preparing the 
+ *   board to send data.
+ *   - `const unsigned char activate_command[] = { 0x52, 0x13, 0x04 };`
+ *   - Structure: `0x52` (address) | `0x13` (activate command) | `0x04` (activation flag).
+ *   - **Note**: The role of `0x04` as an activation flag is unclear. I included it because some protocols suggest this might act as a "start data" signal. More testing is needed to determine its necessity, but I do not fully understand its purpose.
+
+ * - **Calibration Command** (`calibration_command`): Initiates calibration to capture sensor baselines.
+ *   - `const unsigned char calibration_command[] = { 0x52, 0x17, 0x04, 0xa4, 0x00, 0x24, 0x00, 0x18 };`
+ *   - Structure: `0x52` (address) | `0x17` (calibration command) | Sequence of bytes for calibration.
+ *   - **Note**: The sequence following `0x17` is protocol-defined calibration data, likely setting initial sensor baselines. I copied this from other implementations without fully understanding its function.
+
+ * - **LED Control Command** (`led_on_command`): Controls the LED on the Balance Board. This command 
+ *   can toggle the LED based on the specified mask.
+ *   - `const unsigned char led_on_command[] = { 0x52, 0x11, 0x10 };`
+ *   - Structure: `0x52` (address) | `0x11` (LED command) | `0x10` (LED mask for on state).
+ *   - **Note**: The mask `0x10` represents the bit to turn on the single LED on the Balance Board. This part is clear from Wiibrew’s Wiimote documentation.
+
+ * - **Data Dump Command** (`data_dump_command`): Starts continuous data reporting from the Balance Board, 
+ *   sending real-time sensor readings.
+ *   - `const unsigned char data_dump_command[] = { 0x52, 0x15, 0x00, 0x32 };`
+ *   - Structure: `0x52` (address) | `0x15` (data dump command) | `0x00` (reserved) | `0x32` (end byte).
+ *   - **Note**: The `0x32` byte here might act as an end marker or handshake byte to confirm readiness for data streaming, or something completely different—I am unsure.
+ * 
+ * ## Future Extensions
+ * Additional commands may be added as necessary to extend functionality. In the future, 
+ * command arrays could be dynamically filled based on inputs from `stdin` within a monitoring 
+ * thread, allowing real-time command adjustments. For now, the command arrays are statically 
+ * defined in `YAWiiBBessentials.c`, ensuring core commands are readily available.
+ *
+ * @{
+ */
 extern const unsigned char status_command[];
 extern const unsigned char activate_command[];
 extern const unsigned char calibration_command[];
 extern const unsigned char led_on_command[];
 extern const unsigned char data_dump_command[];
-
+/** @} */
 
 
 /**
@@ -73,18 +187,39 @@ typedef struct {
 } WiiBalanceBoard;
 
 /**
- * @brief Logs messages with different verbosity levels.
+ * @brief Logs messages with different verbosity levels, providing diagnostics and raw data output.
  *
- * This function displays messages to the console with an optional buffer,
- * allowing selection of verbosity levels: RAW, DEBUG, or VERBOSE.
+ * This function outputs messages to the console with optional raw data from the Wii Balance Board.
+ * It supports multiple verbosity levels (RAW, DEBUG, and VERBOSE), controlled by the `LogLevel` enum. 
+ * The function is essential for debugging and tracking the board's status and output during development.
  *
- * @param level LogLevel enum indicating the verbosity level.
- * @param message Constant character string message to be logged.
- * @param buffer Optional byte array to display raw data if provided.
+ * This function's implementation interacts closely with the Wiimote protocol, pushing the limits 
+ * of my current understanding of the protocol. Despite attempts to isolate functionality in `essentials`,
+ * it remains a complex function with room for refinement.
+ * 
+ * Potential areas for improvement include:
+ * - **Consistent use of pointers**: Aiming to rely on pointers wherever possible to reduce stack usage 
+ *   and optimize memory management.
+ * - **Modularizing verbosity level handling**: Simplifying logic for handling different verbosity levels, 
+ *   potentially through helper functions to make the code more manageable.
+ *
+ * @param level Pointer to a `LogLevel` enum indicating the verbosity level (RAW, DEBUG, VERBOSE).
+ * @param message Constant character string representing the message to be logged.
+ * @param buffer Optional byte array containing raw data to display if needed. This parameter 
+ *               is processed only when provided (not NULL).
  * @param length Length of the byte array (ignored if buffer is NULL).
+ * @param board Pointer to the `WiiBalanceBoard` structure for accessing board-specific data.
  */
 void print_info(const LogLevel* is_debug_level, const char* message, const unsigned char* buffer, int length, const WiiBalanceBoard* board);
-
+/**
+ * @defgroup EssentialFunctions Essential Functions
+ * @brief Core functions necessary for basic interaction with the Wii Balance Board.
+ * 
+ * This group includes the primary functions needed to find, connect, and 
+ * send commands to the Wii Balance Board. These functions form the foundation 
+ * of the YAWiiBB project and enable essential Bluetooth communication and control.
+ * @{
+ */
 /**
  * @brief Finds the Wii Balance Board by scanning nearby Bluetooth devices.
  * 
@@ -123,7 +258,24 @@ void send_command(int sock, const unsigned char* command, int length);
  * @return Socket descriptor on success, exits program on failure.
  */
 int connect_l2cap(const char* bdaddr_str, uint16_t psm);
-
+/** @} */
+/**
+ * @defgroup CommandHandlers Command Handlers
+ * @brief Functions for handling specific commands to the Wii Balance Board.
+ * 
+ * These functions individually handle specific commands for the Wii Balance Board, such as 
+ * status checks, calibration, LED control, and activation. Each function is called 
+ * when its corresponding flag in the `WiiBalanceBoard` structure is set.
+ * 
+ * While these commands are currently implemented as separate functions, they could 
+ * potentially be unified into a single, generic `handle_send_command` function in 
+ * the future. This separation was initially implemented to manage any specific 
+ * cases or exceptions as outlined in `Wiimote` on `Wiibrew`, which I must admit, I did not fully understand. 
+ * 
+ * If it continues to be straightforward, these functions can later be consolidated 
+ * to streamline the code and remove redundancy.
+ * @{
+ */
 
 /**
  * @brief Processes sending a status command to the Wii Balance Board.
@@ -174,6 +326,7 @@ void handle_activation(WiiBalanceBoard* board);
  * @param board Pointer to the WiiBalanceBoard structure that holds the current status.
  */
 void handle_data_dump(WiiBalanceBoard* board);
+/** @} */
 
 /**
  * @brief Processes received data from the Wii Balance Board.
@@ -229,6 +382,28 @@ void createThread(WiiBalanceBoard* board, pthread_t* threadId);
  * @return `1` if the MAC address is valid; otherwise, `0`.
  */
 int is_valid_mac(int argc, char *argv[]);
+
+/**
+ * @defgroup ExtendedProcessing Extended Data Processing
+ * @brief Functions for interpreting and displaying Wii Balance Board data.
+ *
+ * These functions provide additional capabilities for interpreting and converting 
+ * raw data from the Wii Balance Board into a human-readable format. While not essential 
+ * for the primary operation, they enable a deeper understanding of data processing 
+ * and assist in debugging.
+ * 
+ * Currently, these functions accept variables in some cases, though the goal is to 
+ * refactor them to exclusively use pointers where possible to streamline memory 
+ * management and improve efficiency. Additionally, they would ideally be organized 
+ * in a separate file, but due to challenges in managing memory access and avoiding 
+ * segmentation faults, they remain integrated within this file for now.
+ * 
+ * To activate these extended features, compile with the `YAWIIBB_EXTENDED` flag.
+ *   @code
+ *   gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
+ *   @endcode
+ * @{
+ */
 
 #ifdef YAWIIBB_EXTENDED
 /**
@@ -325,6 +500,6 @@ uint16_t calc_mass(const WiiBalanceBoard* board, uint16_t raw, int pos);
  * If one wants to know whether the calibration data has been stored, they can implement it.
  */
 void print_calibration_data(const WiiBalanceBoard* board);
-
+/** @} */
 #endif //YAWIIBB_EXTENDED
 #endif // YAWIIBBESSENTIALS_H

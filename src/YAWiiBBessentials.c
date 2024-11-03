@@ -1,7 +1,7 @@
 #include "YAWiiBBessentials.h"
 
 
-// Kommandos als konstante Byte-Arrays
+// Kommandos als konstante Byte-Arrays wie in der Header Datei beschrieben
 const unsigned char status_command[] = { 0x52, 0x12, 0x00, 0x32 };
 const unsigned char activate_command[] = { 0x52, 0x13, 0x04 };
 const unsigned char calibration_command[] = { 0x52, 0x17, 0x04, 0xa4, 0x00, 0x24, 0x00, 0x18 };

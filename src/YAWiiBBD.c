@@ -1,28 +1,53 @@
 #include "YAWiiBBessentials.h"
+/**
+ * @mainpage YAWiiBB Project Documentation
+ * 
+ * Welcome to the documentation for the YAWiiBB (Yet Another Wii Balance Board Driver) project. 
+ * This project was born out of necessity: as a physical therapist, I rely on simple and precise measurements of the body’s center of gravity to support assessments and therapy tracking. However, I cannot justify the five-figure costs for medical products that exceed my requirements and stretch my budget. With the Wii system gradually disappearing from the second-hand market and the Balance Board available for as little as 5-10 € on eBay, this project offers a practical solution for capturing data at a fraction of the cost.
+ * 
+ * Initially, I explored larger projects like Wiimote and CWii, but they quickly overwhelmed me as an intermediate programmer. Other projects, especially those in Python, also proved challenging due to limited development progress, which prevented me from tailoring them to my needs. Thus, the YAWiiBB project was created.
+ * 
+ * The primary goal here is straightforward: to read data from the Balance Board via the L2CAP level and output this information as a continuous data stream to stdout. This documentation aims to capture my thought process and invite more skilled developers to understand, improve, and contribute to the project, helping make the Wii Balance Board a simple, accessible tool for body balance measurements.
+ * 
+ * ## About this Documentation
+ * - **Starting Points**: This project is intentionally built in C, not C++. As a result, the main entry point for documentation is found at `files.html`.
+ * - **Contribution**: If you're a programmer interested in accessible data streaming from the Wii Balance Board, consider this a foundation you can build upon. Any improvements, optimizations, or suggestions are highly welcome!
+ * 
+ * Thank you for exploring YAWiiBB! I look forward to any collaborative insights or contributions, making this project stronger together.
+ */
+
 
 /**
  * @file YAWiiBBD.c
- * @brief Hauptdatei für die YAWiiBB-Anwendung, die die Interaktion mit einem Wii Balance Board ermöglicht.
+ * @brief Core file for the YAWiiBB application, facilitating interaction with a Wii Balance Board.
  *
- * Diese Datei enthält die Hauptfunktionalität der Anwendung, einschließlich der
- * Initialisierung der Verbindungen, der Hauptschleife zur Verarbeitung von
- * Befehlen und der Verwaltung von Threads. Abhängig von den Kompilierungsflags
- * kann die Debug-Stufe variieren, was die Protokollierung und den Status der Anwendung
- * beeinflusst.
+ * This file contains the main functionality of the application, including 
+ * setup for Bluetooth connections, the primary loop for data handling, and 
+ * thread management. The compilation flags control debug levels, which influence 
+ * logging and application status reporting.
  *
- * Es wird eine Verbindung zum Wii Balance Board über Bluetooth hergestellt,
- * und die Anwendung verarbeitet Daten in einer Schleife, solange das Board
- * aktiv ist.
+ * The application scans for the Wii Balance Board and attempts to establish 
+ * two L2CAP connections: one for command transmission and one for receiving 
+ * responses. Once connected, it enters a loop to process and output data 
+ * continuously as long as the board remains active.
+ * 
+ * ### Termination
+ * The main loop can be exited by pressing Enter in the terminal or by pressing 
+ * the power button on the Wii Balance Board.
  *
- * @note Um die Anwendung zu kompilieren, verwenden Sie die folgenden Befehle:
- *       - Für die Standardversion: 
- *         @code
- *         gcc -Wall -o simple YAWiiBBD.c -lbluetooth
- *         @endcode
- *       - Für die erweiterte Version:
- *         @code
- *         gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
- *         @endcode
+ * ## Compilation Instructions
+ * Compile the application using the following commands based on the intended configuration:
+ * - **Standard Version**: Basic setup for data streaming.
+ *   @code
+ *   gcc -Wall -o simple YAWiiBBD.c -lbluetooth
+ *   @endcode
+ * - **Extended Version**: Includes additional features and functions found in `YAWiiBBessentials.c`.
+ *   @code
+ *   gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
+ *   @endcode
+ * 
+ * @note Ensure all required Bluetooth dependencies are installed and configured 
+ * to allow successful connection and data handling from the Wii Balance Board.
  */
 
 #ifdef YAWIIBB_EXTENDED
@@ -33,18 +58,22 @@ const LogLevel debug_level = RAW;
 
 
 /**
- * @brief Hauptschleife der Anwendung.
+ * @brief Main loop of the application.
  *
- * Diese Funktion führt die Kernoperationen der Anwendung aus, indem sie
- * verschiedene Aktionen basierend auf den Flags im `WiiBalanceBoard`-Objekt
- * ausführt. Dazu gehören Statusabfragen, Kalibrierung, Aktivierung und
- * das Ein-/Ausschalten der LED. Die empfangenen Daten werden verarbeitet,
- * und die Schleife pausiert für 10 Millisekunden, um die CPU-Belastung
- * zu minimieren.
+ * This function executes the core operations of the application, performing 
+ * various actions based on the flags set within the `WiiBalanceBoard` object. 
+ * These actions include status checks, calibration, activation, and toggling 
+ * the LED on or off. The received data from the Balance Board is processed 
+ * and handled within this loop.
  *
- * @param board Ein Zeiger auf das `WiiBalanceBoard`-Objekt, das die
- *               aktuellen Statusinformationen und Flags enthält.
+ * The loop includes a 10-millisecond delay to reduce CPU load and ensure 
+ * efficient processing of data. It runs continuously until a termination 
+ * signal is received.
+ *
+ * @param board A pointer to the `WiiBalanceBoard` object containing current 
+ *              status information and control flags.
  */
+
 
 void main_loop(WiiBalanceBoard* board) {
     if (board->needStatus) handle_status(board);
@@ -60,19 +89,32 @@ void main_loop(WiiBalanceBoard* board) {
 }
 
 /**
- * @brief Haupteinstiegspunkt der Anwendung.
+ * @brief Main entry point of the application.
  *
- * Diese Funktion initialisiert das `WiiBalanceBoard`, überprüft die
- * Gültigkeit der übergebenen MAC-Adresse und stellt eine Bluetooth-
- * Verbindung zum Balance Board her. Ein Hintergrundthread wird gestartet,
- * der für die Benutzereingabe zuständig ist. Die Hauptschleife wird
- * ausgeführt, solange das `is_running`-Flag auf `true` gesetzt ist.
- * Am Ende werden alle Ressourcen aufgeräumt und die Verbindung zum
- * Balance Board geschlossen.
+ * This function initializes the `WiiBalanceBoard`, checks the validity 
+ * of the provided MAC address, and establishes a Bluetooth connection 
+ * to the Balance Board. If a valid MAC address is detected, a message 
+ * is displayed to the user, suggesting a command line format for 
+ * establishing an immediate connection on subsequent runs:
  *
- * @param argc Anzahl der übergebenen Argumente beim Programmstart.
- * @param argv Array von Zeichenfolgen mit den übergebenen Argumenten.
- * @return 0, wenn das Programm erfolgreich abgeschlossen wurde.
+ * @code
+ * printf("YOU MAY USE \"%s %s\" FOR IMMEDIATE CONNECTION\n", argv[0], board.mac);
+ * @endcode
+ *
+ * A background thread is started to handle user input. Currently, this 
+ * thread only supports program termination commands, allowing the user 
+ * to end the main loop. However, in future versions, this thread could 
+ * be expanded to accept additional commands, such as status requests 
+ * or calibration triggers, by setting corresponding flags in the 
+ * `WiiBalanceBoard` object.
+ * 
+ * The main loop operates as long as the `is_running` flag remains set to `true`.
+ * Upon termination, the function performs cleanup by releasing all 
+ * resources and closing the Bluetooth connection to the Balance Board.
+ *
+ * @param argc Number of arguments passed to the program at startup.
+ * @param argv Array of strings containing the arguments passed.
+ * @return 0 if the program completes successfully.
  */
 
 int main(int argc, char *argv[]) {
