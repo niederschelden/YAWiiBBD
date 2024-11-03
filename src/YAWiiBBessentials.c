@@ -1,7 +1,7 @@
 #include "YAWiiBBessentials.h"
 /**
  * @file YAWiiBBessentials.c
- * @brief Core file for funktions predifined in YAWiiBBessentials.h.
+ * @brief Core file for funktions predefined in YAWiiBBessentials.h.
  */
 
 

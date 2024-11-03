@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Core file for the YAWiiBB application, facilitating interaction with a Wii Balance Board.  
+<p>Core file for the YAWiiBBD application, facilitating interaction with a Wii Balance Board.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="YAWiiBBessentials_8h_source.html">YAWiiBBessentials.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -82,8 +82,8 @@ Include dependency graph for YAWiiBBD.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="YAWiiBBD_8c__incl.png" border="0" usemap="#asrc_2YAWiiBBD_8c" alt=""/></div>
 <map name="asrc_2YAWiiBBD_8c" id="asrc_2YAWiiBBD_8c">
-<area shape="rect" title="Core file for the YAWiiBB application, facilitating interaction with a Wii Balance Board." alt="" coords="564,5,684,32"/>
-<area shape="rect" href="YAWiiBBessentials_8h.html" title="Header file for core definitions and utility functions used in the YAWiiBB project." alt="" coords="547,80,701,107"/>
+<area shape="rect" title="Core file for the YAWiiBBD application, facilitating interaction with a Wii Balance Board." alt="" coords="564,5,684,32"/>
+<area shape="rect" href="YAWiiBBessentials_8h.html" title="Header file for core definitions and utility functions used in the YAWiiBBD project." alt="" coords="547,80,701,107"/>
 <area shape="rect" title=" " alt="" coords="5,155,72,181"/>
 <area shape="rect" title=" " alt="" coords="97,155,167,181"/>
 <area shape="rect" title=" " alt="" coords="192,155,267,181"/>
@@ -115,7 +115,7 @@ Variables</h2></td></tr>
 <tr class="separator:ac66ec18459b1e4901b90504cf3d8bd58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Core file for the YAWiiBB application, facilitating interaction with a Wii Balance Board. </p>
+<div class="textblock"><p >Core file for the YAWiiBBD application, facilitating interaction with a Wii Balance Board. </p>
 <p >This file contains the main functionality of the application, including setup for Bluetooth connections, the primary loop for data handling, and thread management. The compilation flags control debug levels, which influence logging and application status reporting.</p>
 <p >The application scans for the Wii Balance Board and attempts to establish two L2CAP connections: one for command transmission and one for receiving responses. Once connected, it enters a loop to process and output data continuously as long as the board remains active.</p>
 <h3><a class="anchor" id="autotoc_md1"></a>
@@ -126,7 +126,7 @@ Compilation Instructions</h2>
 <p >Compile the application using the following commands based on the intended configuration:</p><ul>
 <li><b>Standard Version</b>: Basic setup for data streaming. <div class="fragment"><div class="line">gcc -Wall -o YAWiiBBD YAWiiBBD.c -lbluetooth</div>
 </div><!-- fragment --></li>
-<li><b>Extended Version</b>: Includes additional features and functions found in <code><a class="el" href="YAWiiBBessentials_8c.html" title="Core file for funktions predifined in YAWiiBBessentials.h.">YAWiiBBessentials.c</a></code>. <div class="fragment"><div class="line">gcc -DYAWIIBB_EXTENDED -Wall -o YAwiiBBD YAWiiBBD.c YAWiiBBessentials.c -lbluetooth</div>
+<li><b>Extended Version</b>: Includes additional features and functions found in <code><a class="el" href="YAWiiBBessentials_8c.html" title="Core file for funktions predefined in YAWiiBBessentials.h.">YAWiiBBessentials.c</a></code>. <div class="fragment"><div class="line">gcc -DYAWIIBB_EXTENDED -Wall -o YAwiiBBD YAWiiBBD.c YAWiiBBessentials.c -lbluetooth</div>
 </div><!-- fragment --></li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>Ensure all required Bluetooth dependencies are installed and configured to allow successful connection and data handling from the Wii Balance Board. </dd></dl>

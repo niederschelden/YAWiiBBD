@@ -5,10 +5,10 @@
 
 /**
  * @file YAWiiBBessentials.h
- * @brief Header file for core definitions and utility functions used in the YAWiiBB project.
+ * @brief Header file for core definitions and utility functions used in the YAWiiBBD project.
  *
  * This header file provides essential definitions, data structures, and function declarations 
- * that support core functionality for the YAWiiBB (Yet Another Wii Balance Board Driver) project. 
+ * that support core functionality for the YAWiiBBD (Yet Another Wii Balance Board Driver) project. 
  * It serves as a foundational component, defining the main interfaces and constants required 
  * for interacting with a Wii Balance Board over Bluetooth.
  *
@@ -43,7 +43,7 @@
  * 
  * ## Usage Notes
  * This file should be included in any source files that need direct access to the core 
- * functionality of YAWiiBB. By isolating these definitions and functions, 
+ * functionality of YAWiiBBD. By isolating these definitions and functions, 
  * `YAWiiBBessentials.h` promotes modularity and ensures that key components of the application 
  * can be maintained and extended independently.
  *
@@ -217,7 +217,7 @@ void print_info(const LogLevel* is_debug_level, const char* message, const unsig
  * 
  * This group includes the primary functions needed to find, connect, and 
  * send commands to the Wii Balance Board. These functions form the foundation 
- * of the YAWiiBB project and enable essential Bluetooth communication and control.
+ * of the YAWiiBBD project and enable essential Bluetooth communication and control.
  * @{
  */
 /**

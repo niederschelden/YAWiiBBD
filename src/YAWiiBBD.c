@@ -13,13 +13,13 @@
  * - **Starting Points**: This project is intentionally built in C, not C++. As a result, the main entry point for documentation is found at `files.html`.
  * - **Contribution**: If you're a programmer interested in accessible data streaming from the Wii Balance Board, consider this a foundation you can build upon. Any improvements, optimizations, or suggestions are highly welcome!
  * 
- * Thank you for exploring YAWiiBB! I look forward to any collaborative insights or contributions, making this project stronger together.
+ * Thank you for exploring YAWiiBBD! I look forward to any collaborative insights or contributions, making this project stronger together.
  */
 
 
 /**
  * @file YAWiiBBD.c
- * @brief Core file for the YAWiiBB application, facilitating interaction with a Wii Balance Board.
+ * @brief Core file for the YAWiiBBD application, facilitating interaction with a Wii Balance Board.
  *
  * This file contains the main functionality of the application, including 
  * setup for Bluetooth connections, the primary loop for data handling, and 
