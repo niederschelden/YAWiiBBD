@@ -403,7 +403,7 @@ int is_valid_mac(int argc, char *argv[]);
  * 
  * @note To activate these extended features, compile with the `YAWIIBB_EXTENDED` flag.
  *   @code
- *   gcc -DYAWIIBB_EXTENDED -Wall -o complex YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
+ *   gcc -DYAWIIBB_EXTENDED -Wall -o YAWiiBBD YAWiiBBD.c YAWiiBBessentials.c -lbluetooth
  *   @endcode
  * @{
  */
