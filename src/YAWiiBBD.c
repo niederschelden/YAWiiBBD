@@ -10,7 +10,7 @@
  * The primary goal here is straightforward: to read data from the Balance Board via the L2CAP level and output this information as a continuous data stream to stdout. This documentation aims to capture my thought process and invite more skilled developers to understand, improve, and contribute to the project, helping make the Wii Balance Board a simple, accessible tool for body balance measurements.
  * 
  * ## About this Documentation
- * - **Starting Points**: This project is intentionally built in C, not C++. As a result, the main entry point for documentation is found at `files.html`.
+ * - **Starting Points**: This project is intentionally built in C, not C++. As a result, the main entry point for documentation is found at `files.html` and `modules.html`.
  * - **Contribution**: If you're a programmer interested in accessible data streaming from the Wii Balance Board, consider this a foundation you can build upon. Any improvements, optimizations, or suggestions are highly welcome!
  * 
  * Thank you for exploring YAWiiBBD! I look forward to any collaborative insights or contributions, making this project stronger together.
@@ -55,7 +55,7 @@
  * @brief Default logging level for output verbosity, dependent on compilation mode.
  *
  * The `debug_level` constant controls the verbosity of output logging for the Wii Balance Board.
- * - When compiled without the `YAWIIBB_EXTENDED` flag, the logging level is set to the only available option`RAW`, 
+ * - When compiled without the `YAWIIBB_EXTENDED` flag, the logging level is set to the only available option `RAW`, 
  *   limiting output to raw, uninterpreted data.
  * - When compiled with the `YAWIIBB_EXTENDED` flag, the logging level defaults to `DEBUG`, 
  *   allowing the selection between multiple verbosity levels (`RAW`, `DECODE`, `DEBUG`, and optionally `VERBOSE`).

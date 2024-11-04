@@ -187,6 +187,16 @@ typedef struct {
 } WiiBalanceBoard;
 
 /**
+ * @defgroup EssentialFunctions Essential Functions
+ * @brief Core functions necessary for basic interaction with the Wii Balance Board.
+ * 
+ * This group includes the primary functions needed to find, connect, and 
+ * send commands to the Wii Balance Board. These functions form the foundation 
+ * of the YAWiiBBD project and enable essential Bluetooth communication and control.
+ * @{
+ */
+
+/**
  * @brief Logs messages with different verbosity levels, providing diagnostics and raw data output.
  *
  * This function outputs messages to the console with optional raw data from the Wii Balance Board.
@@ -211,15 +221,7 @@ typedef struct {
  * @param board Pointer to the `WiiBalanceBoard` structure for accessing board-specific data.
  */
 void print_info(const LogLevel* is_debug_level, const char* message, const unsigned char* buffer, int length, const WiiBalanceBoard* board);
-/**
- * @defgroup EssentialFunctions Essential Functions
- * @brief Core functions necessary for basic interaction with the Wii Balance Board.
- * 
- * This group includes the primary functions needed to find, connect, and 
- * send commands to the Wii Balance Board. These functions form the foundation 
- * of the YAWiiBBD project and enable essential Bluetooth communication and control.
- * @{
- */
+
 /**
  * @brief Finds the Wii Balance Board by scanning nearby Bluetooth devices.
  * 
@@ -258,7 +260,64 @@ void send_command(int sock, const unsigned char* command, int length);
  * @return Socket descriptor on success, exits program on failure.
  */
 int connect_l2cap(const char* bdaddr_str, uint16_t psm);
+
+
+/**
+ * @brief Processes received data from the Wii Balance Board.
+ * 
+ * This function checks the received data and evaluates it. If
+ * a certain condition is met (e.g., the receive code indicates an error),
+ * the `is_running` status is set to `false`.
+ * 
+ * @param bytes_read Number of bytes read in the `buffer`.
+ * @param buffer     Buffer containing the received data.
+ * @param board      Pointer to the WiiBalanceBoard structure that holds the current status.
+ */
+void process_received_data(int bytes_read, unsigned char* buffer, WiiBalanceBoard* board);
+
+/**
+ * @brief Thread function for monitoring user input to control the Wii Balance Board.
+ *
+ * Waits for user input via the console or the power button of the board. If the user presses the button or the enter key
+ * without additional characters, the function sets the `is_running` flag of the `WiiBalanceBoard`
+ * object to `false` and exits the thread.
+ *
+ * @param arg A void pointer to the `WiiBalanceBoard` object passed to the function
+ *            and called at runtime to change the status.
+ * @return Always `NULL` – indicates that the thread has terminated.
+ */
+void* threadFunction(void* arg);
+
+/**
+ * @brief Creates a new thread and starts the `threadFunction` to monitor user control.
+ *
+ * This function creates a new thread and instructs it to execute the `threadFunction`.
+ * In case of errors, an error message is displayed, the `is_running` flag of the Wii Balance Board is
+ * set to `false`, and the program exits with an error code.
+ *
+ * @param board Pointer to the `WiiBalanceBoard` object monitored by the threadFunction.
+ * @param threadId Pointer to the `pthread_t` variable where the ID of the new thread will be stored.
+ */
+void createThread(WiiBalanceBoard* board, pthread_t* threadId);
+
+/**
+ * @brief Validates a given MAC address for format and content.
+ *
+ * Checks whether a valid MAC address has been passed as a single argument.
+ * The address must be exactly 17 characters long and conform to the format `XX:XX:XX:XX:XX:XX`,
+ * where `X` is a hexadecimal character (`0-9`, `A-F`, `a-f`). The function returns
+ * `1` if the input meets the requirements; otherwise, it returns `0`.
+ * 
+ * In case of an invalid format or erroneous inputs, specific error messages
+ * are generated to indicate possible causes.
+ *
+ * @param argc Number of arguments passed to the program.
+ * @param argv Array of arguments, where the second (`argv[1]`) should be the MAC address.
+ * @return `1` if the MAC address is valid; otherwise, `0`.
+ */
+int is_valid_mac(int argc, char *argv[]);
 /** @} */
+
 /**
  * @defgroup CommandHandlers Command Handlers
  * @brief Functions for handling specific commands to the Wii Balance Board.
@@ -327,63 +386,6 @@ void handle_activation(WiiBalanceBoard* board);
  */
 void handle_data_dump(WiiBalanceBoard* board);
 /** @} */
-
-/**
- * @brief Processes received data from the Wii Balance Board.
- * 
- * This function checks the received data and evaluates it. If
- * a certain condition is met (e.g., the receive code indicates an error),
- * the `is_running` status is set to `false`.
- * 
- * @param bytes_read Number of bytes read in the `buffer`.
- * @param buffer     Buffer containing the received data.
- * @param board      Pointer to the WiiBalanceBoard structure that holds the current status.
- */
-void process_received_data(int bytes_read, unsigned char* buffer, WiiBalanceBoard* board);
-
-/**
- * @brief Thread function for monitoring user input to control the Wii Balance Board.
- *
- * Waits for user input via the console or the power button of the board. If the user presses the button or the enter key
- * without additional characters, the function sets the `is_running` flag of the `WiiBalanceBoard`
- * object to `false` and exits the thread.
- *
- * @param arg A void pointer to the `WiiBalanceBoard` object passed to the function
- *            and called at runtime to change the status.
- * @return Always `NULL` – indicates that the thread has terminated.
- */
-void* threadFunction(void* arg);
-
-/**
- * @brief Creates a new thread and starts the `threadFunction` to monitor user control.
- *
- * This function creates a new thread and instructs it to execute the `threadFunction`.
- * In case of errors, an error message is displayed, the `is_running` flag of the Wii Balance Board is
- * set to `false`, and the program exits with an error code.
- *
- * @param board Pointer to the `WiiBalanceBoard` object monitored by the threadFunction.
- * @param threadId Pointer to the `pthread_t` variable where the ID of the new thread will be stored.
- */
-void createThread(WiiBalanceBoard* board, pthread_t* threadId);
-
-/**
- * @brief Validates a given MAC address for format and content.
- *
- * Checks whether a valid MAC address has been passed as a single argument.
- * The address must be exactly 17 characters long and conform to the format `XX:XX:XX:XX:XX:XX`,
- * where `X` is a hexadecimal character (`0-9`, `A-F`, `a-f`). The function returns
- * `1` if the input meets the requirements; otherwise, it returns `0`.
- * 
- * In case of an invalid format or erroneous inputs, specific error messages
- * are generated to indicate possible causes.
- *
- * @param argc Number of arguments passed to the program.
- * @param argv Array of arguments, where the second (`argv[1]`) should be the MAC address.
- * @return `1` if the MAC address is valid; otherwise, `0`.
- */
-int is_valid_mac(int argc, char *argv[]);
-
-
 
 #ifdef YAWIIBB_EXTENDED
 /**

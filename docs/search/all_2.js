@@ -7,5 +7,5 @@ var searchData=
   ['command_20handlers_4',['Command Handlers',['../group__CommandHandlers.html',1,'']]],
   ['connect_5fl2cap_5',['connect_l2cap',['../group__EssentialFunctions.html#gac548fb87e985634984dabe7ba4774b09',1,'connect_l2cap(const char *bdaddr_str, uint16_t psm):&#160;YAWiiBBessentials.c'],['../group__EssentialFunctions.html#gac548fb87e985634984dabe7ba4774b09',1,'connect_l2cap(const char *bdaddr_str, uint16_t psm):&#160;YAWiiBBessentials.c']]],
   ['control_5fsock_6',['control_sock',['../structWiiBalanceBoard.html#a6ef59a62b6f9581f6b589fdf1f054768',1,'WiiBalanceBoard']]],
-  ['createthread_7',['createThread',['../YAWiiBBessentials_8c.html#a5d83dd00e63f0b712581f04ecd9adfd4',1,'createThread(WiiBalanceBoard *board, pthread_t *threadId):&#160;YAWiiBBessentials.c'],['../YAWiiBBessentials_8h.html#a5d83dd00e63f0b712581f04ecd9adfd4',1,'createThread(WiiBalanceBoard *board, pthread_t *threadId):&#160;YAWiiBBessentials.c']]]
+  ['createthread_7',['createThread',['../group__EssentialFunctions.html#ga5d83dd00e63f0b712581f04ecd9adfd4',1,'createThread(WiiBalanceBoard *board, pthread_t *threadId):&#160;YAWiiBBessentials.c'],['../group__EssentialFunctions.html#ga5d83dd00e63f0b712581f04ecd9adfd4',1,'createThread(WiiBalanceBoard *board, pthread_t *threadId):&#160;YAWiiBBessentials.c']]]
 ];
