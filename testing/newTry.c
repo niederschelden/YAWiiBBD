@@ -1,7 +1,7 @@
 
 //achtungung man braucht mehr rechte: sudo setcap cap_dac_read_search+ep ./dateiname
 //wieder rechte wegnehmen sudo setcap -r ./dateiname
-
+//derzeitige mac des controllers  00:22:D7:E1:59:7E
 
 
 #include <stdio.h>
@@ -50,9 +50,15 @@ void list_input_devices() {
 }
 
 int main(int argc, char **argv) {
+    setbuf(stdout, NULL);
     int fd, bytes;
     struct input_event ev;
+     // Aktuelle Werte für Code 3, 4 und 5
+    int current_val_3 = 0;
+    int current_val_4 = 0;
+    int current_val_5 = 0;
 
+    /*
     // Liste der Eingabegeräte anzeigen
     list_input_devices();
 
@@ -65,7 +71,8 @@ int main(int argc, char **argv) {
     // Erstellen des Pfades zum ausgewählten Eingabegerät
     char device_path[20];
     snprintf(device_path, sizeof(device_path), "/dev/input/event%d", device_number);
-
+    */
+    char device_path[] = "/dev/input/event7";   
     // Öffnen des Eingabegeräts im Nur-Lese-Modus
     fd = open(device_path, O_RDONLY);
     if (fd < 0) {
@@ -80,23 +87,35 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    printf("Listening to raw data from %s...\n", device_path);
+    // printf("Listening to raw data from %s...\n", device_path);
 
     // Hauptschleife zur Rohdatenerfassung
     int i = 0;
-    while (i++ < 1000) {
-        // Lesen der Eingabedaten vom Gerät
+    
+    //printf("Code 3      Code 4      Code 5\n"); // Spaltenüberschrift für Klarheit
+
+    while (i++ < 10000) {
         bytes = read(fd, &ev, sizeof(struct input_event));
         if (bytes < (int)sizeof(struct input_event)) {
             perror("Failed to read input event");
             break;
         }
 
-        // Ausgabe der Rohdaten ohne weitere Verarbeitung
-        printf("Time: %ld.%06ld\tType: %d\tCode: %d\tValue: %d\n", 
-               ev.time.tv_sec, ev.time.tv_usec, ev.type, ev.code, ev.value);
-    }
+        // Nur Typ 3 berücksichtigen
+        if (ev.type == 3) {
+            if (ev.code == 3) {
+                current_val_3 = ev.value;
+            } else if (ev.code == 4) {
+                current_val_4 = ev.value;
+            } else if (ev.code == 5) {
+                current_val_5 = ev.value;
+            }
 
+            // Ausgabe der aktuellen Werte mit fester Breite
+            printf("%-10d %-10d %-10d\r", current_val_3, current_val_4, current_val_5);
+        }
+    }
+    printf("STOP\n");
     // Freigeben des Geräts
     ioctl(fd, EVIOCGRAB, 0);
     close(fd);
