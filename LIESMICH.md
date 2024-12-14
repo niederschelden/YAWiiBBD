@@ -2,7 +2,7 @@
 
 YAWiiBB ist eine einfache C-Bibliothek, um das Wii Balance Board ohne Wii-Konsole zu verwenden, was ich speziell für physiotherapeutische Übungen tun möchte. Anfangs war ich ziemlich begeistert von Projekten wie [namacha's wiiboard](https://github.com/namacha/wiiboard) und [Pierrick Koch's wiiboard](https://github.com/PierrickKoch/wiiboard). Doch da `pyBluez` soweit ich es sehe nicht mehr weiterentwickelt wird, konnte ich keine Python-Lösung mit Python 3 betreiben.
 
-Statt mich mit schweren C/C++-Treibern herumzuschlagen, die mir einfach zu komplex waren, habe ich meine eigene, leichte Bibliothek in C geschrieben, die genau meine Anforderungen erfüllt. YAWiiBB lässt sich als Python-Subprozess starten und liefert zuverlässig die Sensordaten des Balance Boards ohne überflüssige Komplexität.
+Statt mich mit schweren C/C++-Treibern herumzuschlagen, die mir einfach zu komplex waren, habe ich meine eigene, leichte Bibliothek in C geschrieben, die genau meine Anforderungen erfüllt. YAWiiBB lässt sich als Python-Subprozess starten und liefert zuverlässig die Sensordaten des Balance Boards ohne überflüssige Komplexität. 
 
 Die Bibliothek ist unter der GNU General Public License lizenziert und steht in keinerlei Verbindung zu Nintendo. Ich entwickle das Projekt unabhängig und nutze lediglich die Hardware.
 
